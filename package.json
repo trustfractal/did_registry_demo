@@ -1,0 +1,29 @@
+{
+  "name": "did_registry_demo",
+  "version": "1.0.0",
+  "description": "A guide on how to interact with Fractla's [DID Registry](https://github.com/trustfractal/web3-identity#option-2-did-registry-lookup).",
+  "scripts": {
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
+  },
+  "main": "index.js",
+  "homepage": "https://github.com/trustfractal/did_registry_demo#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trustfractal/did_registry_demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trustfractal/did_registry_demo/issues"
+  },
+  "keywords": [],
+  "author": "Trust Fractal <engineering@fractal.id>",
+  "license": "MIT"
+}

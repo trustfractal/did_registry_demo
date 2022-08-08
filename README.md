@@ -21,7 +21,7 @@ Remix IDE includes an in-browser Ethereum implementation, which we'll be using i
 So, let's get started!
 
 <details>
-  <summary>Step-by-step demonstration</summary>
+  <summary>👁 Step-by-step demonstration</summary>
 
 - Go to [Remix IDE](https://remix.ethereum.org/)
 - Clone this git repo as a workspace
@@ -49,7 +49,7 @@ So, what does Fractal do with it? And, more importantly, what can we do with it?
 When a user submits their documents and our identity specialist verify their identity, if they've associated an EVM address with their account, our servers call `addUserAddress` with the user's address and personally unique id.
 
 <details>
-  <summary>Step-by-step demonstration</summary>
+  <summary>👁 Step-by-step demonstration</summary>
 
 Let's use ourselves as an example.
 
@@ -80,7 +80,7 @@ Furthermore, Fractal's servers also make a few `addUserToList` calls with the re
   There's is a list per country, with the format `citizenship_XX`, where `XX` is the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. For example, Italy has the code `it`, and there's a corresponding `citizenship_it` list. If a user is in one of these lists, Fractal has verified they are a citizen of the respective country.
 
 <details>
-  <summary>Step-by-step demonstration</summary>
+  <summary>👁 Step-by-step demonstration</summary>
 
 Let's use ourselves as an example. Let's pretend we're a Portuguese citizen (`pt`) that lives in Finland (`fi`) that has passed KYC level `plus`.
 
@@ -118,7 +118,7 @@ With this data on the contract, we're now enabled to preform two operations: che
 By calling `getFractalId` with an address, you get back the user's personally unique identifier within Fractal's system. If two addresses return the same identifier, you can be sure they belong to the same person. Conversely, if two addresses return different identifiers, you can be sure they belong to different people.
 
 <details>
-  <summary>Step-by-step demonstration</summary>
+  <summary>👁 Step-by-step demonstration</summary>
 
 Let's use ourselves as an example.
 

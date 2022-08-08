@@ -10,18 +10,21 @@ We're still building this guide. If you need help today, get in touch through <s
 
 In order to get our hands dirty with some mock data, we will:
 
-- Deploy a mock version of Fractal's [DID Registry](https://github.com/trustfractal/web3-identity/blob/main/FractalRegistry.sol) using [Remix IDE](https://remix.ethereum.org/)
+- Deploy a mock version of Fractal's [DID Registry](https://github.com/trustfractal/web3-identity/blob/main/FractalRegistry.sol)
 - Understand how Fractal operates this contract
+- Create voting contract, and require its vote function to only be called once per person
 - Create a mintable ERC20 token, and require its mint function to be called by KYC-approved addresses
 
 ## Setup and deploy
 
-Remix IDE includes an in-browser Ethereum implementation, which we'll be using in this guide (so we don't spend money not have to chase down testnet faucets). Don't worry, real-word operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchains you prefer.
+This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstration, in order to familiarize yourself with the concepts. After that, go through the demonstractions, in order to get hands-on experience and build a strong intuition.
 
-So, let's get started!
+For these demonstrations, we'll be using Remix IDE, which includes an in-browser Ethereum implementation, so we don't spend real money or have to chase down testnet faucets. However, don't worry, real-word operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
+
+Let's get started! First off, let's start by deploying and
 
 - Go to [Remix IDE](https://remix.ethereum.org/)
 - Clone this git repo as a workspace
@@ -105,13 +108,13 @@ Let's use ourselves as an example. Let's pretend we're a Portuguese citizen (`pt
 
         You should see another success checkmark on the console
 
-    </details>
+We've now successfully emulated Fractal's operation of the contract, and we can now see how we'd interact with it to check a user's status.
 
-We've now successfully emulated Fractal's operation of the contract, and we can now see how we'd interacti with it to check a user's status.
+</details>
 
 ### Consulting state
 
-With this data on the contract, we're now enabled to preform two operations: check if an address belongs to a unique user, and check which lists the users belongs to.
+With this data on the contract, we're now able to preform two operations: check if an address belongs to a unique user, and check which lists the users belongs to.
 
 ### User uniqueness
 
@@ -132,7 +135,7 @@ Let's use ourselves as an example.
     0: bytes32: 0x0000000000000000000000000000000000000000000000000000000000000001
     ```
 
-This is us getting beck the same identified we're inputed before in this guide.
+This is us getting back the same identifier we've inputed before in this guide.
 
 </details>
 

@@ -144,18 +144,20 @@ An example use case is having a voting contract where you require the voter to b
 Here's a stripped down version of what that could look like:
 
 ```solidity
-    function vote(uint8 option) external {
-        bytes32 fractalId = FractalRegistry(OXADDRESS).getFractalId(msg.sender);
+function vote(uint8 option) external {
+    bytes32 fractalId = FractalRegistry(OXADDRESS).getFractalId(msg.sender);
 
-        require(!has_voted[fractalId], "Same person can't vote twice.");
-        has_voted[fractalId] = true;
+    require(!has_voted[fractalId], "Same person can't vote twice.");
+    has_voted[fractalId] = true;
 
-        votes[option] += 1;
-    }
+    votes[option] += 1;
+}
 ```
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
+
+TODO get this out into its own JS file to make it less tedious?
 
 </details>
 

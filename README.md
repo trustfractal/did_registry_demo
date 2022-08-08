@@ -15,16 +15,16 @@ In order to get our hands dirty with some mock data, we will:
 - Create voting contract, and require its vote function to only be called once per person
 - Create a mintable ERC20 token, and require its mint function to be called by KYC-approved addresses
 
-## Setup and deploy
-
 This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstration, in order to familiarize yourself with the concepts. After that, go through the demonstractions, in order to get hands-on experience and build a strong intuition.
+
+## Setup and deploy
 
 For these demonstrations, we'll be using Remix IDE, which includes an in-browser Ethereum implementation, so we don't spend real money or have to chase down testnet faucets. However, don't worry, real-word operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-Let's get started! First off, let's start by deploying and
+Let's get started! First off, let's start by deploying our own copy of a FractalRegistry.
 
 - Go to [Remix IDE](https://remix.ethereum.org/)
 - Clone this git repo as a workspace
@@ -39,7 +39,7 @@ Let's get started! First off, let's start by deploying and
     - Paste it on the box to the right of the Deploy button
     - Click Deploy
 
-That's it! 🎉 We now have a working FractalRegistry deployment to play around with!
+We now have a working FractalRegistry deployment to play around with! 🎉
 
 </details>
 
@@ -66,7 +66,10 @@ Let's use ourselves as an example.
       ```
       Normally, when Fractal's server call this method, this value is a personal unique identifier.
   - Click "transact"
-  </details>
+
+Our address is now in the FractalRegistry! 🚀
+
+</details>
 
 Fractal's servers also make a few `addUserToList` calls with the relevant lists. There are three categories of lists:
 
@@ -108,7 +111,7 @@ Let's use ourselves as an example. Let's pretend we're a Portuguese citizen (`pt
 
         You should see another success checkmark on the console
 
-We've now successfully emulated Fractal's operation of the contract, and we can now see how we'd interact with it to check a user's status.
+We've now successfully emulated Fractal's operation of the contract, and we can now see how we'd interact with it to check a user's status! 🕵️
 
 </details>
 
@@ -135,7 +138,7 @@ Let's use ourselves as an example.
     0: bytes32: 0x0000000000000000000000000000000000000000000000000000000000000001
     ```
 
-This is us getting back the same identifier we've inputed before in this guide.
+This is us getting back the same identifier we've inputed before in this guide. 👌
 
 </details>
 
@@ -174,16 +177,16 @@ There's two other relevant public functions on the contract. Going over them qui
 
 ### One person, one vote
 
-An example use case of Fractal's DID Registry is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote.
+An example use case of Fractal's DID Registry personal user identifier is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote.
 
 Here's a stripped down version of what that could look like:
 
 ```solidity
 function vote(uint8 option) external {
     bytes32 fractalId = FractalRegistry(OXADDRESS).getFractalId(msg.sender);
-    require(!has_voted[fractalId], "Same person can't vote twice.");
+    require(!hasVoted[fractalId], "Same person can't vote twice.");
 
-    has_voted[fractalId] = true;
+    hasVoted[fractalId] = true;
     votes[option] += 1;
 }
 ```
@@ -191,15 +194,13 @@ function vote(uint8 option) external {
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-TODO get this out into its own JS file to make it less tedious?
+TODO get this out into its own JS file to make it less tedious? 🫥
 
 </details>
 
-#### Using client-side JavaScript
-
 ### Require KYC approval
 
-- Create a mintable ERC20 token, and require its mint function to be called by KYC-approved addresses
+An example use case of Fractal's DID Registry list presence is checking wether a user has passed KYC, and if they're of a particular residency or citizenship.
 
 Here's a stripped down version of what that could look like:
 
@@ -221,4 +222,17 @@ function buy() external payable {
 };
 ```
 
-#### Using client-side JavaScript
+<details>
+  <summary>👁 Step-by-step demonstration</summary>
+
+TODO get this out into its own JS file to make it less tedious? 🫥
+
+</details>
+
+### Using client-side JavaScript
+
+Since the main goal of the DID Registry is to be a readable resource, you can also use it off chain directly from your dApp's code!
+
+TODO Insert brief example here.
+
+TODO Insert link to a demo app here.

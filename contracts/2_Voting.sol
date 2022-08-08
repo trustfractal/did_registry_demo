@@ -10,7 +10,7 @@ contract Voting {
 
     uint8 public numOptions;
     mapping(uint8 => uint8) public votes;
-    mapping(bytes32 => bool) public has_voted;
+    mapping(bytes32 => bool) public hasVoted;
 
     constructor(uint8 _numOptions, address _fractalRegistryAddress) {
         numOptions = _numOptions;
@@ -27,10 +27,10 @@ contract Voting {
 
         bytes32 fractalId = fractalRegistry.getFractalId(msg.sender);
         require(
-            !has_voted[fractalId],
+            !hasVoted[fractalId],
             "Invalid call: same person can't vote twice."
         );
-        has_voted[fractalId] = true;
+        hasVoted[fractalId] = true;
 
         votes[option] += 1;
     }

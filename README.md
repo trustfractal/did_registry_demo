@@ -102,8 +102,10 @@ Let's use ourselves as an example. Let's pretend we're a Portuguese citizen (`pt
   - Let's do another "addUserToList" call for our residency
     - On the `listId` field, put in `residency_fi`
   - Click "transact"
-  You should see another success checkmark on the console
-  </details>
+
+        You should see another success checkmark on the console
+
+    </details>
 
 We've now successfully emulated Fractal's operation of the contract, and we can now see how we'd interacti with it to check a user's status.
 
@@ -114,6 +116,9 @@ With this data on the contract, we're now enabled to preform two operations: che
 ### User uniqueness
 
 By calling `getFractalId` with an address, you get back the user's personally unique identifier within Fractal's system. If two addresses return the same identifier, you can be sure they belong to the same person. Conversely, if two addresses return different identifiers, you can be sure they belong to different people.
+
+<details>
+  <summary>Step-by-step demonstration</summary>
 
 Let's use ourselves as an example.
 
@@ -128,6 +133,8 @@ Let's use ourselves as an example.
     ```
 
 This is us getting beck the same identified we're inputed before in this guide.
+
+</details>
 
 An example use case is having
 

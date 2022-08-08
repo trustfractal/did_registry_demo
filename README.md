@@ -20,6 +20,9 @@ Remix IDE includes an in-browser Ethereum implementation, which we'll be using i
 
 So, let's get started!
 
+<details>
+  <summary>Step-by-step demonstration</summary>
+
 - Go to [Remix IDE](https://remix.ethereum.org/)
 - Clone this git repo as a workspace
 - Compile and deploy the contract
@@ -35,6 +38,8 @@ So, let's get started!
 
 That's it! 🎉 We now have a working FractalRegistry deployment to play around with!
 
+</details>
+
 ## Operation of the contract
 
 So, what does Fractal do with it? And, more importantly, what can we do with it?
@@ -42,6 +47,9 @@ So, what does Fractal do with it? And, more importantly, what can we do with it?
 ### On user KYC approval
 
 When a user submits their documents and our identity specialist verify their identity, if they've associated an EVM address with their account, our servers call `addUserAddress` with the user's address and personally unique id.
+
+<details>
+  <summary>Step-by-step demonstration</summary>
 
 Let's use ourselves as an example.
 
@@ -55,21 +63,29 @@ Let's use ourselves as an example.
       ```
       Normally, when Fractal's server call this method, this value is a personally unique identifier.
   - Click "transact"
+  </details>
 
 Furthermore, Fractal's servers also make a few `addUserToList` calls with the relevant lists. There's three categories of lists:
 
 - KYC level
+
   There's two lists -- `basic` and `plus` -- corresponding to the [KYC levels](https://docs.developer.fractal.id/kyc-levels). If a user is in the list, they have passed the KYC checks for that level.
 
 - Residency
+
   There's is a list per country, with the format `residency_XX`, where `XX` is the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. For example, Spain has the code `es`, and there's a corresponding `residency_es` list. If a user is in one of these lists, Fractal has verified they reside in the respective country.
 
 - Citizenship
+
   There's is a list per country, with the format `citizenship_XX`, where `XX` is the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. For example, Italy has the code `it`, and there's a corresponding `citizenship_it` list. If a user is in one of these lists, Fractal has verified they are a citizen of the respective country.
+
+<details>
+  <summary>Step-by-step demonstration</summary>
 
 Let's use ourselves as an example. Let's pretend we're a Portuguese citizen (`pt`) that lives in Finland (`fi`) that has passed KYC level `plus`.
 
 - Go to the "Deploy & run transactions"
+
   - Click the arrow on the left of "FRACTALREGISTRY", below "Deployed Contracts"
   - Click the arrow on the right of "addUserToList"
     - On the `userId` field, paste the fractalId we've used before:
@@ -78,13 +94,16 @@ Let's use ourselves as an example. Let's pretend we're a Portuguese citizen (`pt
       ```
     - On the `listId` field, put in `plus`
   - Click "transact"
+
     You should see an entry on the console (bottom portion of the window) with a big green checkmark. This indicates success! 🎉
+
   - Let's do another "addUserToList" call for our citizenship
     - On the `listId` field, put in `citizenship_pt`
   - Let's do another "addUserToList" call for our residency
     - On the `listId` field, put in `residency_fi`
   - Click "transact"
-    You should see another success checkmark on the console
+  You should see another success checkmark on the console
+  </details>
 
 We've now successfully emulated Fractal's operation of the contract, and we can now see how we'd interacti with it to check a user's status.
 

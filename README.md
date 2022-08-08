@@ -139,17 +139,51 @@ This is us getting back the same identifier we've inputed before in this guide.
 
 </details>
 
-An example use case is having a voting contract where you require the voter to be in Fractal's DID registry and for a person to only be able to cast one vote.
+### KYC levels, residency, and citizenship
+
+After you get the user's personal id, you can them check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status, residency, and citizenship.
+
+Here are a few examples:
+
+```solidity
+// Plus KYC level, and not resident in China, and not a US citizen.
+registry.isUserInList(fractalId, "plus") &&
+    !registry.isUserInList(fractalId, "residency_cn") &&
+    !registry.isUserInList(fractalId, "citizenship_us")
+
+// Basic KYC level, and resides in Portugal or Spain.
+registry.isUserInList(fractalId, "basic") &&
+    (
+      registry.isUserInList(fractalId, "residency_pt") ||
+      registry.isUserInList(fractalId, "residency_es")
+    )
+
+// Basic or Plus KYC level, no residency or citizenship requirements.
+registry.isUserInList(fractalId, "basic") ||
+    registry.isUserInList(fractalId, "plus")
+```
+
+### On user change or document expiration
+
+There's two other relevant public functions on the contract. Going over them quickly:
+
+- When a user removes (or changes) their associated EVM address, Fractal's servers call `removeUserAddress` appropriatly (and, on change, also call `addUserAddress`).
+- When a user submits new information that changes their KYC, residency, or citizenship status, Fractal's servers will make the appropriate `removeUserFromList` (and possibly `addUserToList`) calls to keep the user's on-chain information up-to-date.
+
+## Usage examples
+
+### One person, one vote
+
+An example use case of Fractal's DID Registry is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote.
 
 Here's a stripped down version of what that could look like:
 
 ```solidity
 function vote(uint8 option) external {
     bytes32 fractalId = FractalRegistry(OXADDRESS).getFractalId(msg.sender);
-
     require(!has_voted[fractalId], "Same person can't vote twice.");
-    has_voted[fractalId] = true;
 
+    has_voted[fractalId] = true;
     votes[option] += 1;
 }
 ```
@@ -161,15 +195,30 @@ TODO get this out into its own JS file to make it less tedious?
 
 </details>
 
-### User has passed KYC
+#### Using client-side JavaScript
 
-isUserInList
+### Require KYC approval
 
-### On user change or document expiration
+- Create a mintable ERC20 token, and require its mint function to be called by KYC-approved addresses
 
-removeUserAddress
-removeUserFromList
+Here's a stripped down version of what that could look like:
 
-## On-chain usage example
+```solidity
+function buy() external payable {
+  FractalRegistry registry = FractalRegistry(OXADDRESS);
+  bytes32 fractalId = registry.getFractalId(msg.sender);
+  require(
+      registry.isUserInList(fractalId, "plus") &&
+          !registry.isUserInList(fractalId, "residency_cn") &&
+          !registry.isUserInList(fractalId, "citizenship_us"),
+      "Non KYC-compliant sender. "
+        "Must have cleared `plus` level, "
+        "not reside in China, and "
+        "not be a US citizen"
+  );
 
-## Javascript usage example
+  _mint(msg.sender, msg.value);
+};
+```
+
+#### Using client-side JavaScript

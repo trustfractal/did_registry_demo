@@ -1,6 +1,6 @@
 # DID Registry demo
 
-A guide on how to interact with Fractla's [DID Registry](https://github.com/trustfractal/web3-identity#option-2-did-registry-lookup).
+A guide on how to interact with Fractal's [DID Registry](https://github.com/trustfractal/web3-identity#option-2-did-registry-lookup).
 
 ## ⚠️ Work in Progress ⚠️
 
@@ -49,7 +49,7 @@ So, what does Fractal do with it? And, more importantly, what can we do with it?
 
 ### On user KYC approval
 
-When a user submits their documents and our identity specialist verify their identity, if they've associated an EVM address with their account, our servers call `addUserAddress` with the user's address and personally unique id.
+When a user submits their documents and our identity specialist verify their identity, if they've associated an EVM address with their account, our servers call `addUserAddress` with the user's address and a personal unique id.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
@@ -64,11 +64,11 @@ Let's use ourselves as an example.
       ```
       0x0000000000000000000000000000000000000000000000000000000000000001
       ```
-      Normally, when Fractal's server call this method, this value is a personally unique identifier.
+      Normally, when Fractal's server call this method, this value is a personal unique identifier.
   - Click "transact"
   </details>
 
-Furthermore, Fractal's servers also make a few `addUserToList` calls with the relevant lists. There's three categories of lists:
+Fractal's servers also make a few `addUserToList` calls with the relevant lists. There are three categories of lists:
 
 - KYC level
 
@@ -118,7 +118,7 @@ With this data on the contract, we're now able to preform two operations: check 
 
 ### User uniqueness
 
-By calling `getFractalId` with an address, you get back the user's personally unique identifier within Fractal's system. If two addresses return the same identifier, you can be sure they belong to the same person. Conversely, if two addresses return different identifiers, you can be sure they belong to different people.
+By calling `getFractalId` with an address, you get back the user's personal unique identifier within Fractal's system. If two addresses return the same identifier, you can be sure they belong to the same person. Conversely, if two addresses return different identifiers, you can be sure they belong to different people.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
@@ -139,7 +139,25 @@ This is us getting back the same identifier we've inputed before in this guide.
 
 </details>
 
-An example use case is having
+An example use case is having a voting contract where you require the voter to be in Fractal's DID registry and for a person to only be able to cast one vote.
+
+Here's a stripped down version of what that could look like:
+
+```solidity
+    function vote(uint8 option) external {
+        bytes32 fractalId = FractalRegistry(OXADDRESS).getFractalId(msg.sender);
+
+        require(!has_voted[fractalId], "Same person can't vote twice.");
+        has_voted[fractalId] = true;
+
+        votes[option] += 1;
+    }
+```
+
+<details>
+  <summary>👁 Step-by-step demonstration</summary>
+
+</details>
 
 ### User has passed KYC
 

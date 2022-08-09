@@ -126,6 +126,8 @@ With this data on the contract, we're now able to preform two operations: check 
 
 By calling `getFractalId` with an address, you get back its controlling user's `fractalId`. If two addresses return the same identifier, you can be sure they belong to the same person. Conversely, if two addresses return different identifiers, you can be sure they belong to different people.
 
+If `getFractalId` returns `0`, that means the address isn't associated with any user known to Fractal. Be sure to check its return value!
+
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
@@ -147,7 +149,7 @@ This is us getting back the same identifier we've inputed before in this guide. 
 
 ### KYC levels, residency, and citizenship
 
-After you get the user's personal id, you can them check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status, residency, and citizenship.
+After you get the user's personal id, you can then check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status, residency, and citizenship.
 
 Here are a few examples:
 
@@ -171,18 +173,18 @@ registry.isUserInList(fractalId, "basic") ||
 
 ### On user change or document expiration
 
-There's two other relevant public functions on the contract. Going over them quickly:
+There's two other relevant public functions on the contract. Going over them briefly:
 
-- When a user removes (or changes) their associated EVM address, Fractal's servers call `removeUserAddress` appropriatly (and, on change, also call `addUserAddress`).
+- When a user removes (or changes) their associated EVM address, Fractal's servers call `removeUserAddress` appropriately (and, on change, also call `addUserAddress`).
 - When a user submits new information that changes their KYC, residency, or citizenship status, Fractal's servers will make the appropriate `removeUserFromList` (and possibly `addUserToList`) calls to keep the user's on-chain information up-to-date.
 
 ## Usage examples
 
 ### One person, one vote
 
-An example use case of Fractal's DID Registry personal user identifier is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote.
+An example use case of `fractalId`s is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote.
 
-Here's a stripped down version of what that could look like:
+Here's a simplified example:
 
 ```solidity
 function vote(uint8 option) external {
@@ -204,9 +206,9 @@ TODO get this out into its own JS file to make it less tedious? 🫥
 
 ### Require KYC approval
 
-An example use case of Fractal's DID Registry list presence is checking wether a user has passed KYC, and if they're of a particular residency or citizenship.
+An example use case of `fractalId` being present in lists is checking wether a user has passed KYC, and if they're of a particular residency or citizenship.
 
-Here's a stripped down version of what that could look like:
+Here's a simplified example:
 
 ```solidity
 function buy() external payable {

@@ -184,6 +184,7 @@ Here's a stripped down version of what that could look like:
 ```solidity
 function vote(uint8 option) external {
     bytes32 fractalId = FractalRegistry(OXADDRESS).getFractalId(msg.sender);
+    require(fractalId != 0, "User must be present in FractalRegistry.");
     require(!hasVoted[fractalId], "Same person can't vote twice.");
 
     hasVoted[fractalId] = true;
@@ -209,7 +210,8 @@ function buy() external payable {
   FractalRegistry registry = FractalRegistry(OXADDRESS);
   bytes32 fractalId = registry.getFractalId(msg.sender);
   require(
-      registry.isUserInList(fractalId, "plus") &&
+      fractalId != 0 &&
+          registry.isUserInList(fractalId, "plus") &&
           !registry.isUserInList(fractalId, "residency_cn") &&
           !registry.isUserInList(fractalId, "citizenship_us"),
       "Non KYC-compliant sender. "

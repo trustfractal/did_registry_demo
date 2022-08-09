@@ -27,11 +27,15 @@ contract Voting {
 
         bytes32 fractalId = fractalRegistry.getFractalId(msg.sender);
         require(
-            !hasVoted[fractalId],
-            "Invalid call: same person can't vote twice."
+            fractalId != 0,
+            "Unregistered user: user must be present in FractalRegistry."
         );
-        hasVoted[fractalId] = true;
+        require(
+            !hasVoted[fractalId],
+            "Already voted: the same person can't vote twice."
+        );
 
+        hasVoted[fractalId] = true;
         votes[option] += 1;
     }
 

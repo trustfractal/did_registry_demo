@@ -59,18 +59,50 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
   </details>
 
-- Compile and deploy the `contracts/1_FractalRegistry.sol` contract
-  - On the file explorer on the left
-    - Click "contracts"
-    - Click "1_FractalRegistry.sol"
-  - Go to the "Solidity compiler" tab
-    - Click "Compile 1_FractalRegistry.sol".
-  - Go to the "Deploy & run transactions"
-    - Copy your address
-    - Paste it on the box to the right of the Deploy button
-    - Click Deploy
+- Compile and deploy the `contracts/1_FractalRegistry.sol` contract. Use your own address as `root`.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  - On the file browser on the left, click "contracts", and then "1_FractalRegistry.sol".
+
+    <img src="media/01-07.png" />
+
+  - With that file open, click on the "Solidity compiler" tab
+
+    <img src="media/01-08.png" />
+
+  - Click on the "Compile 01_FractalRegistry.sol" button
+
+    <img src="media/01-09.png" />
+
+  - Everything should go well, and you should see a green checkmark on the tab
+
+    <img src="media/01-10.png" />
+
+  - Next, click on the "Deploy & run transactions" tab
+
+    <img src="media/01-11.png" />
+
+  - We're now going to deploy the contract we've just deployed. In order to do that, the contract needs to know who will be able to change its state. That's going to be the account we're currently using. Click on the "Copy account to clipboard" button.
+
+    <img src="media/01-13.png" />
+
+  - Paste it on the box to the right of the "Deploy" button, and press that button.
+
+    <img src="media/01-14.png" />
+
+  - The contract is now deployed. You should be able to see three consequences:
+
+    1. Your account's balance went down a little bit. This is because it was spent as gas to perform the deployment.
+    2. You should see a success message on the console on the bottom.
+    3. You should now have a contract entry on the bottom left.
+
+    <img src="media/01-15.png" />
 
 We now have a working FractalRegistry deployment to play around with! 🎉
+
+  </details>
 
 </details>
 

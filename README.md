@@ -8,18 +8,18 @@ We're still building this guide. If you need help today, get in touch through <s
 
 ## Overview
 
-In order to get our hands dirty with some mock data, we will:
+To get our hands dirty with some mock data, we will:
 
 - Deploy a mock version of Fractal's [DID Registry](https://github.com/trustfractal/web3-identity/blob/main/FractalRegistry.sol)
 - Understand how Fractal operates this contract
 - Create voting contract, and require its vote function to only be called once per person
-- Create a mintable ERC20 token, and require its mint function to be called by KYC-approved addresses
+- Create a buyable ERC20 token, and require its mint function to be called by KYC-approved addresses
 
-This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstration, in order to familiarize yourself with the concepts. After that, go through the demonstractions, in order to get hands-on experience and build a strong intuition.
+This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstration, in order to familiarize yourself with the concepts. After that, go through the demonstrations, in order to get hands-on experience and build a strong intuition.
 
 ## Setup and deploy
 
-For these demonstrations, we'll be using Remix IDE, which includes an in-browser Ethereum implementation, so we don't spend real money or have to chase down testnet faucets. However, don't worry, real-word operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
+For these demonstrations, we'll be using Remix IDE, which includes an in-browser Ethereum implementation, so we don't spend real money or have to chase down testnet faucets. However, don't worry, real-world operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
@@ -67,7 +67,7 @@ Let's use ourselves as an example.
       ```
       0x0000000000000000000000000000000000000000000000000000000000000001
       ```
-      Normally, when Fractal's server call this method, this value is a personal unique identifier.
+      As mentioned, when Fractal's servers call this method, this value is a personal unique identifier.
   - Click "transact"
 
 Our address is now in the FractalRegistry! 🚀
@@ -78,15 +78,15 @@ Fractal's servers also make a few `addUserToList` calls with the relevant lists.
 
 - KYC level
 
-  There's two lists -- `basic` and `plus` -- corresponding to the [KYC levels](https://docs.developer.fractal.id/kyc-levels). If a user is in one of these two lists, they have passed the KYC checks for that level.
+  There are two lists -- `basic` and `plus` -- which correspond to the [KYC levels](https://docs.developer.fractal.id/kyc-levels). If a user is in one of these two lists, they have passed the KYC checks for that level.
 
 - Residency
 
-  There's is a list per country, with the format `residency_XX`, where `XX` is the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. For example, Spain has the code `es`, and there's a corresponding `residency_es` list. If a user is in one of these lists, Fractal has verified they reside in the respective country.
+  There's a list per country, with the format `residency_XX`, where `XX` is the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. For example, Spain has the code `es`, and there's a corresponding `residency_es` list. If a user is in one of these lists, Fractal has verified they reside in the respective country.
 
 - Citizenship
 
-  There's is a list per country, with the format `citizenship_XX`, where `XX` is the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. For example, Italy has the code `it`, and there's a corresponding `citizenship_it` list. If a user is in one of these lists, Fractal has verified they are a citizen of the respective country.
+  There's a list per country, with the format `citizenship_XX`, where `XX` is the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. For example, Italy has the code `it`, and there's a corresponding `citizenship_it` list. If a user is in one of these lists, Fractal has verified they are a citizen of the respective country.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
@@ -143,13 +143,13 @@ Let's use ourselves as an example.
     0: bytes32: 0x0000000000000000000000000000000000000000000000000000000000000001
     ```
 
-This is us getting back the same identifier we've inputed before in this guide. 👌
+This is us getting back the same identifier we've input before in this guide. 👌
 
 </details>
 
 ### KYC levels, residency, and citizenship
 
-After you get the user's personal id, you can then check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status, residency, and citizenship.
+After you get the user's `fractalId`, you can then check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status, residency, and citizenship.
 
 Here are a few examples:
 
@@ -182,7 +182,7 @@ There's two other relevant public functions on the contract. Going over them bri
 
 ### One person, one vote
 
-An example use case of `fractalId`s is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote.
+An example use case of `fractalId`'s pre-person uniqueness is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote.
 
 Here's a simplified example:
 
@@ -206,7 +206,7 @@ TODO get this out into its own JS file to make it less tedious? 🫥
 
 ### Require KYC approval
 
-An example use case of `fractalId` being present in lists is checking wether a user has passed KYC, and if they're of a particular residency or citizenship.
+An example use case of `fractalId` presence in specific lists is checking whether a user has passed KYC, and if they're of a particular residency or citizenship.
 
 Here's a simplified example:
 
@@ -240,6 +240,8 @@ TODO get this out into its own JS file to make it less tedious? 🫥
 
 Since the main goal of the DID Registry is to be a readable resource, you can also use it off chain directly from your dApp's code!
 
-TODO Insert brief example here.
+> ⚠️ TODO Add a brief example.
 
-TODO Insert link to a demo app here.
+> ⚠️ TODO Add contract addresses (for the various networks) and ABI.
+
+> ⚠️ TODO Add link to a demo app.

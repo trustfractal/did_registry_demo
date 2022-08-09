@@ -240,7 +240,7 @@ TODO get this out into its own JS file to make it less tedious? 🫥
 
 Since the main goal of the DID Registry is to be a readable resource, you can also use it off chain directly from your dApp's code!
 
-> ⚠️ TODO Add a brief example.
+> ⚠️ TODO Add a brief web3.js example.
 
 > ⚠️ TODO Add contract addresses (for the various networks) and ABI.
 

@@ -84,7 +84,7 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
     <img src="media/01-11.png" />
 
-  - We're now going to deploy the contract we've just deployed. In order to do that, the contract needs to know who will be able to change its state. That's going to be the account we're currently using. Click on the "Copy account to clipboard" button.
+  - We're now going to deploy the contract we've just compiled. In order to do that, this specific contract needs to know who will be able to change its state. That's going to be the account we're currently using. Click on the "Copy account to clipboard" button.
 
     <img src="media/01-13.png" />
 
@@ -98,7 +98,7 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
     2. You should see a success message on the console on the bottom.
     3. You should now have a contract entry on the bottom left.
 
-    <img src="media/01-15.png" />
+      <img src="media/01-15.png" />
 
 We now have a working FractalRegistry deployment to play around with! 🎉
 

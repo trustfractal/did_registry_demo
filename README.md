@@ -33,7 +33,7 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  - On your browser, go to <https://remix.ethereum.org/>. Accept or decline their analytics collection.
+  - On your browser, go to `https://remix.ethereum.org/`. Accept or decline their analytics collection.
 
     <img src="media/01-01.png" />
 
@@ -41,7 +41,7 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
     <img src="media/01-02.png" />
 
-  - The Remix IDE should now be ready to be used. You should see like this:
+  - The Remix IDE should now be ready to be used. You should look like this:
 
     <img src="media/01-03.png" />
 
@@ -98,7 +98,7 @@ Let's use ourselves as an example.
     - On the `addr` field, paste your own address
     - On the `fractalId` field, let's paste:
       ```
-      0x0000000000000000000000000000000000000000000000000000000000000001
+      0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF
       ```
       As mentioned, when Fractal's servers call this method, this value is a personal unique identifier.
   - Click "transact"

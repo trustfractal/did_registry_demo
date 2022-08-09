@@ -15,7 +15,7 @@ To get our hands dirty with some mock data, we will:
 - Create voting contract, and require its vote function to only be called once per person
 - Create a buyable ERC20 token, and require its mint function to be called by KYC-approved addresses
 
-This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstration, in order to familiarize yourself with the concepts. After that, go through the demonstrations, in order to get hands-on experience and build a strong intuition.
+This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstrations, in order to familiarize yourself with the concepts. After that, go through the demonstrations, in order to get hands-on experience and build a strong intuition.
 
 ## Setup and deploy
 
@@ -24,11 +24,42 @@ For these demonstrations, we'll be using Remix IDE, which includes an in-browser
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
+In order to make this guide accessible to non-blockchain developers, we've included step-by-step screenshots. If you're a blockchain developer and you're familiar with Remix IDE, feel free to skip these.
+
 Let's get started! First off, let's start by deploying our own copy of a FractalRegistry.
 
-- Go to [Remix IDE](https://remix.ethereum.org/)
-- Clone this git repo as a workspace
-- Compile and deploy the contract
+- Go to [Remix IDE](https://remix.ethereum.org/) and clone this git repo as a workspace.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  - On your browser, go to <https://remix.ethereum.org/>. Accept or decline their analytics collection.
+
+    <img src="media/01-01.png" />
+
+  - Click through the welcome wizard.
+
+    <img src="media/01-02.png" />
+
+  - The Remix IDE should now be ready to be used. You should see like this:
+
+    <img src="media/01-03.png" />
+
+  - Click on "Clone Git Repository"
+
+    <img src="media/01-04.png" />
+
+  - Input `https://github.com/trustfractal/did_registry_demo` and click "Ok"
+
+    <img src="media/01-05.png" />
+
+  - Remix will take a few seconds to do the clone. After it's done, you should see new files on the left bar:
+
+    <img src="media/01-06.png" />
+
+  </details>
+
+- Compile and deploy the `contracts/1_FractalRegistry.sol` contract
   - On the file explorer on the left
     - Click "contracts"
     - Click "1_FractalRegistry.sol"
@@ -56,6 +87,8 @@ When a user submits their documents and our identity specialist verify their ide
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
+
+TODO-screenshots
 
 Let's use ourselves as an example.
 
@@ -90,6 +123,8 @@ Fractal's servers also make a few `addUserToList` calls with the relevant lists.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
+
+TODO-screenshots
 
 Let's use ourselves as an example. Let's pretend we're a Portuguese citizen (`pt`) that lives in Finland (`fi`) that has passed KYC level `plus`.
 
@@ -130,6 +165,8 @@ If `getFractalId` returns `0`, that means the address isn't associated with any 
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
+
+TODO-screenshots
 
 Let's use ourselves as an example.
 
@@ -200,6 +237,8 @@ function vote(uint8 option) external {
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
+TODO-screenshots
+
 TODO get this out into its own JS file to make it less tedious? 🫥
 
 </details>
@@ -231,6 +270,8 @@ function buy() external payable {
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
+
+TODO-screenshots
 
 TODO get this out into its own JS file to make it less tedious? 🫥
 

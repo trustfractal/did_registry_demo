@@ -45,11 +45,14 @@ We now have a working FractalRegistry deployment to play around with! 🎉
 
 ## Operation of the contract
 
-So, what does Fractal do with it? And, more importantly, what can we do with it?
+So, what does Fractal do with the contract? And, more importantly, what can we do with it?
 
 ### On user KYC approval
 
-When a user submits their documents and our identity specialist verify their identity, if they've associated an EVM address with their account, our servers call `addUserAddress` with the user's address and a personal unique id.
+When a user submits their documents and our identity specialist verify their identity, if they've associated an EVM address with their account, our servers call `addUserAddress` with two arguments:
+
+- the user's EVM address
+- a personally unique identifier, called `fractalId`
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
@@ -75,7 +78,7 @@ Fractal's servers also make a few `addUserToList` calls with the relevant lists.
 
 - KYC level
 
-  There's two lists -- `basic` and `plus` -- corresponding to the [KYC levels](https://docs.developer.fractal.id/kyc-levels). If a user is in the list, they have passed the KYC checks for that level.
+  There's two lists -- `basic` and `plus` -- corresponding to the [KYC levels](https://docs.developer.fractal.id/kyc-levels). If a user is in one of these two lists, they have passed the KYC checks for that level.
 
 - Residency
 
@@ -101,7 +104,7 @@ Let's use ourselves as an example. Let's pretend we're a Portuguese citizen (`pt
     - On the `listId` field, put in `plus`
   - Click "transact"
 
-    You should see an entry on the console (bottom portion of the window) with a big green checkmark. This indicates success! 🎉
+    You should see an entry on the console (bottom portion of the window) with a big green checkmark, which indicates success.
 
   - Let's do another "addUserToList" call for our citizenship
     - On the `listId` field, put in `citizenship_pt`
@@ -121,7 +124,7 @@ With this data on the contract, we're now able to preform two operations: check 
 
 ### User uniqueness
 
-By calling `getFractalId` with an address, you get back the user's personal unique identifier within Fractal's system. If two addresses return the same identifier, you can be sure they belong to the same person. Conversely, if two addresses return different identifiers, you can be sure they belong to different people.
+By calling `getFractalId` with an address, you get back its controlling user's `fractalId`. If two addresses return the same identifier, you can be sure they belong to the same person. Conversely, if two addresses return different identifiers, you can be sure they belong to different people.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>

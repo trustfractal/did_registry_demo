@@ -94,8 +94,8 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
   - The contract is now deployed. You should be able to see three consequences:
 
-    1. Your account's balance went down a little bit. This is because it was spent as gas to perform the deployment.
-    2. You should see a success message on the console on the bottom.
+    1. You should see a success message on the console on the bottom.
+    2. Your account's balance went down a little bit. This is because it was spent as gas as part of the deployment.
     3. You should now have a contract entry on the bottom left.
 
       <img src="media/01-15.png" />

@@ -223,10 +223,10 @@ After you get the user's `fractalId`, you can then check their presence on the R
 Here are a few examples:
 
 ```solidity
-// Plus KYC level, and not resident in China, and not a US citizen.
+// Plus KYC level, and not resident in Fiji, and not a Iceland citizen.
 registry.isUserInList(fractalId, "plus") &&
-    !registry.isUserInList(fractalId, "residency_cn") &&
-    !registry.isUserInList(fractalId, "citizenship_us")
+    !registry.isUserInList(fractalId, "residency_fj") &&
+    !registry.isUserInList(fractalId, "citizenship_is")
 
 // Basic KYC level, and resides in Portugal or Spain.
 registry.isUserInList(fractalId, "basic") &&
@@ -288,12 +288,12 @@ function buy() external payable {
   require(
       fractalId != 0 &&
           registry.isUserInList(fractalId, "plus") &&
-          !registry.isUserInList(fractalId, "residency_cn") &&
-          !registry.isUserInList(fractalId, "citizenship_us"),
+          !registry.isUserInList(fractalId, "residency_fj") &&
+          !registry.isUserInList(fractalId, "citizenship_is"),
       "Non KYC-compliant sender. "
         "Must have cleared `plus` level, "
-        "not reside in China, and "
-        "not be a US citizen"
+        "not reside in Fiji, and "
+        "not be a Iceland citizen"
   );
 
   _mint(msg.sender, msg.value);

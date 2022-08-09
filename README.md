@@ -100,7 +100,7 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
       <img src="media/01-15.png" />
 
-We now have a working FractalRegistry deployment to play around with! 🎉
+  We now have a working FractalRegistry deployment to play around with! 🎉
 
   </details>
 

@@ -120,22 +120,18 @@ When a user submits their documents and our identity specialist verify their ide
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-TODO-screenshots
+Let's use ourselves as an example. Let's pretend Fractal assigned us the `fractalId` of `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`.
 
-Let's use ourselves as an example.
+- Make a `addUserAddress` call with:
+  - `addr`: our own address
+  - `fractalId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
 
-- Go to the "Deploy & run transactions"
-  - Click the arrow on the left of "FRACTALREGISTRY", below "Deployed Contracts"
-  - Click the arrow on the right of "addUserAddre..."
-    - On the `addr` field, paste your own address
-    - On the `fractalId` field, let's paste:
-      ```
-      0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF
-      ```
-      As mentioned, when Fractal's servers call this method, this value is a personal unique identifier.
-  - Click "transact"
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
 
-Our address is now in the FractalRegistry! 🚀
+    TODO-screenshots
+
+  </details>
 
 </details>
 
@@ -156,32 +152,43 @@ Fractal's servers also make a few `addUserToList` calls with the relevant lists.
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-TODO-screenshots
+Let's pretend we're a Swedish citizen (`se`) living in the Åland Islands (`ax`) that has passed the Plus KYC level (`plus`).
 
-Let's use ourselves as an example. Let's pretend we're a Portuguese citizen (`pt`) that lives in Finland (`fi`) that has passed KYC level `plus`.
+- Make a `addUserToList` call with:
 
-- Go to the "Deploy & run transactions"
+  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
+  - `listId`: `citizenship_se`
 
-  - Click the arrow on the left of "FRACTALREGISTRY", below "Deployed Contracts"
-  - Click the arrow on the right of "addUserToList"
-    - On the `userId` field, paste the fractalId we've used before:
-      ```
-      0x0000000000000000000000000000000000000000000000000000000000000001
-      ```
-    - On the `listId` field, put in `plus`
-  - Click "transact"
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
 
-    You should see an entry on the console (bottom portion of the window) with a big green checkmark, which indicates success.
+  TODO-screenshots
 
-  - Let's do another "addUserToList" call for our citizenship
-    - On the `listId` field, put in `citizenship_pt`
-  - Let's do another "addUserToList" call for our residency
-    - On the `listId` field, put in `residency_fi`
-  - Click "transact"
+  </details>
 
-        You should see another success checkmark on the console
+- Make a `addUserToList` call with:
 
-We've now successfully emulated Fractal's operation of the contract, and we can now see how we'd interact with it to check a user's status! 🕵️
+  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
+  - `listId`: `residency_ax`
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Make a `addUserToList` call with:
+
+  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
+  - `listId`: `plus`
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
 
 </details>
 
@@ -198,21 +205,33 @@ If `getFractalId` returns `0`, that means the address isn't associated with any 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-TODO-screenshots
+Let's see how to contract responds to querying for own address, and an arbitrary address that's not in the contract.
 
-Let's use ourselves as an example.
+- Make a `getFractalId` call with:
+  - `addr`: your own address
+- Verify that you get our `fractalId` back.
 
-- Go to the "Deploy & run transactions"
-  - Click the arrow on the left of "FRACTALREGISTRY", below "Deployed Contracts"
-  - Click the arrow on the right of "getFractalId"
-    - On the `addr` field, paste your own address
-  - Click "call"
-  - Below the "call" button, you should now see:
-    ```
-    0: bytes32: 0x0000000000000000000000000000000000000000000000000000000000000001
-    ```
+  `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
 
-This is us getting back the same identifier we've input before in this guide. 👌
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Make a `getFractalId` call with:
+  - `addr`: something arbitrary valid address. Here's an example: `0x05a56E2D52c817161883f50c441c3228CFe54d9f`
+- Verify that you get back the "zero address":
+
+  `0x0000000000000000000000000000000000000000000000000000000000000000`
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
 
 </details>
 
@@ -239,6 +258,61 @@ registry.isUserInList(fractalId, "basic") &&
 registry.isUserInList(fractalId, "basic") ||
     registry.isUserInList(fractalId, "plus")
 ```
+
+<details>
+  <summary>👁 Step-by-step demonstration</summary>
+
+Let's see how to contract responds to querying for own lists, and an some other arbitrary ones.
+
+- Make a `isUserInList` call with:
+  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
+  - `listId`: `citizenship_se`
+- Verify that you get back `true`.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Make a `isUserInList` call with:
+  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
+  - `listId`: `residency_ax`
+- Verify that you get back `true`.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Make a `isUserInList` call with:
+  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
+  - `listId`: `citizenship_dk`
+- Verify that you get back `false`.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Make a `isUserInList` call with:
+  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
+  - `listId`: `residency_fi`
+- Verify that you get back `false`.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+</details>
 
 ### On user change or document expiration
 
@@ -269,6 +343,7 @@ function vote(uint8 option) external {
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
+TODO-steps
 TODO-screenshots
 
 TODO get this out into its own JS file to make it less tedious? 🫥
@@ -303,6 +378,7 @@ function buy() external payable {
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
+TODO-steps
 TODO-screenshots
 
 TODO get this out into its own JS file to make it less tedious? 🫥

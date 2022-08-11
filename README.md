@@ -442,7 +442,7 @@ function buy() external payable {
   );
 
   _mint(msg.sender, msg.value);
-};
+}
 ```
 
 <details>

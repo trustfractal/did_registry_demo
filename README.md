@@ -222,8 +222,8 @@ Let's see how to contract responds to querying for own address, and an arbitrary
   </details>
 
 - Make a `getFractalId` call with:
-  - `addr`: something arbitrary valid address. Here's an example: `0x05a56E2D52c817161883f50c441c3228CFe54d9f`
-- Verify that you get back the "zero address":
+  - `addr`: some arbitrary valid address. Here's an example: `0x05a56E2D52c817161883f50c441c3228CFe54d9f`
+- Verify that you get back zero:
 
   `0x0000000000000000000000000000000000000000000000000000000000000000`
 

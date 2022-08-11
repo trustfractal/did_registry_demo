@@ -12,14 +12,14 @@ To get our hands dirty with some mock data, we will:
 
 - Deploy a mock version of Fractal's [DID Registry](https://github.com/trustfractal/web3-identity/blob/main/FractalRegistry.sol)
 - Understand how Fractal operates this contract
-- Create voting contract, and require its vote function to only be called once per person
-- Create a buyable ERC20 token, and require its mint function to be called by KYC-approved addresses
+- Create a voting contract, and require its vote function to only be called once per person
+- Create a buyable ERC20 token with a mint function that can only be called by address we know are KYC-approved
 
 This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstrations, in order to familiarize yourself with the concepts. After that, go through the demonstrations, in order to get hands-on experience and build a strong intuition.
 
 ## Setup and deploy
 
-For these demonstrations, we'll be using Remix IDE, which includes an in-browser Ethereum implementation, so we don't spend real money or have to chase down testnet faucets. However, don't worry, real-world operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
+For these demonstrations, we'll be using Remix IDE, which includes an in-browser Ethereum implementation. This way we don't spend real money or have to chase down testnet faucets. Don't worry, real-world operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>

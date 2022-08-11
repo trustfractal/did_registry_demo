@@ -355,7 +355,7 @@ Let's try it out and see how it behaves!
 - Compile and deploy the `contracts/2_Voting.sol` contract. For constructor arguments, use:
 
   - `options`: `4`. Nothing special about this choice.
-  - `fractalRegistryAddress`: the address of the FractalRegistry we've been using.
+  - `registryAddress`: the address of the FractalRegistry we've been using.
 
   <details>
     <summary>📸 Step-by-step screenshots</summary>

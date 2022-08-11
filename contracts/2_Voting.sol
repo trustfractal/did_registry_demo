@@ -6,15 +6,15 @@ import {FractalRegistry} from "./1_FractalRegistry.sol";
 /// @title Simplified, non-secret, voting contract
 /// @notice Toy example of Fractal's DID Registry usage to enable "One Person <=> One Vote".
 contract Voting {
-    FractalRegistry fractalRegistry;
+    FractalRegistry registry;
 
     uint8 private numOptions;
     mapping(uint8 => uint8) private votes;
     mapping(bytes32 => bool) private hasVoted;
 
-    constructor(uint8 options, address fractalRegistryAddress) {
+    constructor(uint8 options, address registryAddress) {
         numOptions = options;
-        fractalRegistry = FractalRegistry(fractalRegistryAddress);
+        registry = FractalRegistry(registryAddress);
     }
 
     /// @notice Cast a vote.
@@ -25,7 +25,7 @@ contract Voting {
             "Invalid option: `option` must be lower than `options`."
         );
 
-        bytes32 fractalId = fractalRegistry.getFractalId(msg.sender);
+        bytes32 fractalId = registry.getFractalId(msg.sender);
         require(
             fractalId != 0,
             "Unregistered user: user must be present in FractalRegistry."

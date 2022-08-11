@@ -1,7 +1,7 @@
 {
   "name": "did_registry_demo",
   "version": "1.0.0",
-  "description": "A guide on how to interact with Fractla's [DID Registry](https://github.com/trustfractal/web3-identity#option-2-did-registry-lookup).",
+  "description": "A guide on how to interact with Fractal's [DID Registry](https://github.com/trustfractal/web3-identity#option-2-did-registry-lookup).",
   "scripts": {
     "lint": "prettier --write . && solhint contracts/**/*.sol",
     "prepare": "husky install"

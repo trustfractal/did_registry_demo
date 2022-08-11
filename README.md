@@ -409,7 +409,7 @@ Let's try it out and see how it behaves!
 
   </details>
 
-- Let's call `currentTally` again. Even thugh we tried to execute a bunch of invalid votes, it should return the same results as before.
+- Let's call `currentTally` again. Even though we tried to execute a bunch of invalid votes, it should return the same results as before.
 
   <details>
     <summary>📸 Step-by-step screenshots</summary>

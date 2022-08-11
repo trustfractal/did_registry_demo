@@ -123,13 +123,14 @@ When a user submits their documents and our identity specialist verify their ide
 Let's use ourselves as an example. Let's pretend Fractal assigned us the `fractalId` of `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`.
 
 - Make a `addUserAddress` call with:
+
   - `addr`: our own address
   - `fractalId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-    TODO-screenshots
+  TODO-screenshots
 
   </details>
 
@@ -325,7 +326,7 @@ There's two other relevant public functions on the contract. Going over them bri
 
 ### One person, one vote
 
-An example use case of `fractalId`'s pre-person uniqueness is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote.
+An example use case of `fractalId`'s pre-person uniqueness is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote, effectively requiring personhood and achieving Sybil-resistance.
 
 Here's a simplified example:
 
@@ -343,10 +344,79 @@ function vote(uint8 option) external {
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-TODO-steps
-TODO-screenshots
+The Voting contract, which can be found at `contracts/2_Voting.sol`, only has 3 relevant operations:
 
-TODO get this out into its own JS file to make it less tedious? 🫥
+- Being deployed. Its constructor requires two arguments: the number of options we're voting for (i.e., how different choices are in our ballot) and the address for the FractalRegistry contract.
+- Vote. It takes a single argument, the option you're voting for.
+- Tallying the results. This returns the current vote count for each option.
+
+Let's try it out and see how it behaves!
+
+- Compile and deploy the `contracts/2_Voting.sol` contract. For constructor arguments, use:
+
+  - `options`: `4`. Nothing special about this choice.
+  - `fractalRegistryAddress`: the address of the FractalRegistry we've been using.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's call `currentTally`. It should show that all four options have zero votes.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's call `vote` with option `1`. It should succeed.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's call `currentTally` again. It should show that option `1` has one vote, and that options `0`, `2`, and `3` have all zero votes.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's try calling `vote` again. This time, it should fail, with the reason "Already voted: the same person can't vote twice."
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's try calling `vote` with a different address, one that's not registered in our FractalRegistry contract. It should fail, with the reason "Unregistered user: user must be present in FractalRegistry."
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's call `currentTally` again. Even thugh we tried to execute a bunch of invalid votes, it should return the same results as before.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
 
 </details>
 

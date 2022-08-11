@@ -4,11 +4,11 @@ pragma solidity >=0.7.0 <0.9.0;
 /// @title Fractal registry v0
 /// @author Antoni Dikov and Shelby Doolittle
 contract FractalRegistry {
-    address root;
-    mapping(address => bool) delegates;
+    address private root;
+    mapping(address => bool) private delegates;
 
-    mapping(address => bytes32) fractalIdForAddress;
-    mapping(string => mapping(bytes32 => bool)) userLists;
+    mapping(address => bytes32) private fractalIdForAddress;
+    mapping(string => mapping(bytes32 => bool)) private userLists;
 
     constructor(address _root) {
         root = _root;

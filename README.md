@@ -420,9 +420,9 @@ Let's try it out and see how it behaves!
 
 </details>
 
-### Require KYC approval
+### Require KYC approval for buying tokens
 
-An example use case of `fractalId` presence in specific lists is checking whether a user has passed KYC, and if they're of a particular residency or citizenship.
+An example use case of `fractalId` presence in specific lists is, in order to buy some ERC20 token, check that a user has passed KYC and that they're of a particular residency or citizenship.
 
 Here's a simplified example:
 
@@ -449,9 +449,15 @@ function buy() external payable {
   <summary>👁 Step-by-step demonstration</summary>
 
 TODO-steps
-TODO-screenshots
 
-TODO get this out into its own JS file to make it less tedious? 🫥
+- Deploy `contracts/3_DemoToken.sol`
+- Check the balance for ourselves, should == 0
+- Buy some tokens with the user we already have
+- Check the balance for ourselves, should > 0
+- Remove `residency_ax`, add `residency_fj`.
+- Try to buy some more tokens, notice it now fails.
+
+TODO-screenshots
 
 </details>
 

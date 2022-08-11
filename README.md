@@ -222,8 +222,8 @@ Let's see how to contract responds to querying for own address, and an arbitrary
   </details>
 
 - Make a `getFractalId` call with:
-  - `addr`: something arbitrary valid address. Here's an example: `0x05a56E2D52c817161883f50c441c3228CFe54d9f`
-- Verify that you get back the "zero address":
+  - `addr`: some arbitrary valid address. Here's an example: `0x05a56E2D52c817161883f50c441c3228CFe54d9f`
+- Verify that you get back zero:
 
   `0x0000000000000000000000000000000000000000000000000000000000000000`
 
@@ -409,7 +409,7 @@ Let's try it out and see how it behaves!
 
   </details>
 
-- Let's call `currentTally` again. Even thugh we tried to execute a bunch of invalid votes, it should return the same results as before.
+- Let's call `currentTally` again. Even though we tried to execute a bunch of invalid votes, it should return the same results as before.
 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
@@ -448,16 +448,67 @@ function buy() external payable {
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-TODO-steps
+The DemoToken contract, which can be found at `contracts/3_DemoToken.sol`, is a toy ERC20 token with a `buy` method that, when it receives funds from a KYC-approved account with the `plus` level, mints (i.e. creates) new tokens. In order to portray the common requirement of disallowing certain countries, the contract rejects Fiji (`fj`) residents and Iceland (`is`) citizens.
 
-- Deploy `contracts/3_DemoToken.sol`
-- Check the balance for ourselves, should == 0
-- Buy some tokens with the user we already have
-- Check the balance for ourselves, should > 0
-- Remove `residency_ax`, add `residency_fj`.
-- Try to buy some more tokens, notice it now fails.
+In order to make things simpler, we're going to be reusing the [OpenZeppelin's ERC20 implementation](https://docs.openzeppelin.com/contracts/4.x/erc20). It brings along a lot of standard ERC20 methods but, for this demo, we only care about `balance`, which will let us check our balance.
 
-TODO-screenshots
+Let's try it out and see it working!
+
+- Compile and deploy the `contracts/3_DemoToken.sol` contract. For constructor arguments, use:
+
+  - `registryAddress`: the address of the FractalRegistry we've been using.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's call `balance` for our own address. Since we didn't buy any tokens yet, it should be zero.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's call `buy` with 42 Wei. Since we're in the `plus` list, we're not in the `residency_fj` list, and we're also not in the `citizenship_is` list, we should be successful!
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's call `balance` again. It should now return 42.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- In order to see an example of a non-compliant person trying to buy tokens, let's pretend we moved from the Åland Islands (`ax`) to Fiji (`fj`). Let's remove our `fractalId` from the list `residency_ax` add it to `residency_fj`.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
+
+- Let's try calling `buy` again. Since our residency is now on Fiji (`fj`), which is marked as disallowed, the contract now refuses the transaction.
+
+  <details>
+    <summary>📸 Step-by-step screenshots</summary>
+
+  TODO-screenshots
+
+  </details>
 
 </details>
 

@@ -19,8 +19,6 @@ contract DemoToken is ERC20 {
     /// KYC `plus` level, to not be a Fiji resident, and not be an Iceland
     /// resident.
     function buy() external payable {
-        require(msg.value > 0, "Can't buy zero tokens");
-
         bytes32 fractalId = registry.getFractalId(msg.sender);
         require(
             fractalId != 0 &&
@@ -29,6 +27,8 @@ contract DemoToken is ERC20 {
                 !registry.isUserInList(fractalId, "citizenship_is"),
             "Non KYC-compliant sender."
         );
+
+        require(msg.value > 0, "Can't buy zero tokens. Add some value to the call.");
 
         _mint(msg.sender, msg.value);
     }

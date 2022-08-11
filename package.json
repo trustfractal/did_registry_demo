@@ -28,5 +28,8 @@
   },
   "keywords": [],
   "author": "Trust Fractal <engineering@fractal.id>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.3"
+  }
 }

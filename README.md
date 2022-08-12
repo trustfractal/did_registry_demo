@@ -369,7 +369,25 @@ Let's see how to contract responds to querying for own lists, and an some other 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Look for, and click on the arrow to the right of `isUserInList`.
+
+      <img src="media/03-09.png" />
+
+  - Paste `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF` on the `userId` box.
+
+      <img src="media/03-10.png" />
+
+  - Paste `citizenship_se` on the `listId` box.
+
+      <img src="media/03-11.png" />
+
+  - Click "call".
+
+      <img src="media/03-12.png" />
+
+  - The call should be successful and have returned `true`.
+
+      <img src="media/03-13.png" />
 
   </details>
 

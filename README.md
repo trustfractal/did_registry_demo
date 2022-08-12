@@ -399,7 +399,17 @@ Let's see how to contract responds to querying for own lists, and an some other 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `residency_ax` on the `listId` box.
+
+      <img src="media/03-14.png" />
+
+  - Click "call".
+
+      <img src="media/03-15.png" />
+
+  - The call should be successful and have returned `true`.
+
+      <img src="media/03-16.png" />
 
   </details>
 

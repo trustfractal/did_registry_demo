@@ -443,7 +443,17 @@ Let's see how to contract responds to querying for own lists, and an some other 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `residency_fi` on the `listId` box.
+
+      <img src="media/03-20.png" />
+
+  - Click "call".
+
+      <img src="media/03-21.png" />
+
+  - The call should be successful and have returned `false`.
+
+      <img src="media/03-22.png" />
 
   </details>
 

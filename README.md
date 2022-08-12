@@ -134,7 +134,33 @@ Let's use ourselves as an example. Let's pretend Fractal assigned us the `fracta
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on the arrow to the left of the deployed contract. This will reveal the contract's functions.
+
+      <img src="media/02-01.png" />
+
+  - Scroll down and click on the arrow to the right of "addUserAddre...". This will show the input boxes to put in arguments to make a call to `addUserAddress`.
+
+      <img src="media/02-02.png" />
+
+  - Scroll all the way up, and copy your own address.
+
+      <img src="media/02-03.png" />
+
+  - Scroll back down to the `addUserAddress` input boxes, and paste your own address in the `addr` box.
+
+      <img src="media/02-04.png" />
+
+  - Paste `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF` on the `fractalId` box.
+
+      <img src="media/02-05.png" />
+
+  - Click "transact".
+
+      <img src="media/02-06.png" />
+
+  - The transaction should go through successfully. You should see a new green checkmark appear in the console informing us that the call to `FractalRegistry.addUserAddress` has been successful.
+
+      <img src="media/02-07.png" />
 
   </details>
 

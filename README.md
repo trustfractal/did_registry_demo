@@ -2,6 +2,10 @@
 
 A guide on how to interact with Fractal's [DID Registry](https://github.com/trustfractal/web3-identity#option-2-did-registry-lookup).
 
+See something wrong? Open up a pull request!
+
+See something that's confusing or just not immediately obvious? Open up an issue!
+
 ## ⚠️ Work in Progress ⚠️
 
 We're still building this guide. If you need help today, get in touch through <sales@fractal.id>.

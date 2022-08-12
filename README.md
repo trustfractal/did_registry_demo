@@ -504,7 +504,57 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - On the file browser on the left, click "contracts", and then "contracts/2_Voting.sol".
+
+    <img src="media/04-01.png" />
+
+  - With that file open, click on the "Solidity compiler" tab.
+
+    <img src="media/04-02.png" />
+
+  - Click on the "Compile 2_Voting.sol" button.
+
+    <img src="media/04-03.png" />
+
+  - Everything should go well, and you should see a green checkmark on the tab.
+
+    <img src="media/04-04.png" />
+
+  - Next, click on the "Deploy & run transactions" tab.
+
+    <img src="media/04-05.png" />
+
+  - Make sure the Voting contract is selected.
+
+    <img src="media/04-06.png" />
+
+  - Click on the arrow to the right of the Deploy button. This should show the argument input boxes.
+
+    <img src="media/04-07.png" />
+
+  - Copy your FractalRegistry address.
+
+    <img src="media/04-08.png" />
+
+  - Input `4` in the `options` box.
+
+    <img src="media/04-09.png" />
+
+  - Paste it in the `registryAddress` box.
+
+    <img src="media/04-10.png" />
+
+  - Click "transact".
+
+    <img src="media/04-11.png" />
+
+  - The contract is now deployed. You should see a success message on the console on the bottom.
+
+    <img src="media/04-12.png" />
+
+  - If you scroll all the way to the bottom, you should now have a Voting contract entry.
+
+    <img src="media/04-13.png" />
 
   </details>
 

@@ -316,7 +316,17 @@ Let's see how to contract responds to querying for own address, and an arbitrary
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `0x05a56E2D52c817161883f50c441c3228CFe54d9f` on the `addr` box.
+
+      <img src="media/03-06.png" />
+
+  - Click "call".
+
+      <img src="media/03-07.png" />
+
+  - The call should be successful and have returned `0x0000000000000000000000000000000000000000000000000000000000000000`.
+
+      <img src="media/03-08.png" />
 
   </details>
 

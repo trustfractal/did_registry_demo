@@ -223,7 +223,17 @@ Let's pretend we're a Swedish citizen (`se`) living in the Åland Islands (`ax`)
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `residency_ax` on the `listId` box.
+
+      <img src="media/02-13.png" />
+
+  - Click "transact".
+
+      <img src="media/02-14.png" />
+
+  - The transaction should go through successfully. You should see a new green checkmark appear in the console informing us that the call to `FractalRegistry.addUserToList` has been successful.
+
+      <img src="media/02-15.png" />
 
   </details>
 

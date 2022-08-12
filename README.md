@@ -285,7 +285,25 @@ Let's see how to contract responds to querying for own address, and an arbitrary
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Look for, and click on the arrow to the right of `getFractalId`.
+
+      <img src="media/03-01.png" />
+
+  - Scroll all the way up, and copy your own address.
+
+      <img src="media/03-02.png" />
+
+  - Paste your own address on the `addr` box.
+
+      <img src="media/03-03.png" />
+
+  - Click "call".
+
+      <img src="media/03-04.png" />
+
+  - The call should be successful. Remix does output some details to the console but, more importantly, the result of the call is displayed just below it. We can see that our call returned `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`, which is the `fractalId` we assigned to our address previously in this guide.
+
+      <img src="media/03-05.png" />
 
   </details>
 

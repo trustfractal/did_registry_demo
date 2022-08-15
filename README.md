@@ -563,7 +563,17 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on the arrow to the left of the deployed contract. This will reveal the contract's functions.
+
+      <img src="media/04-14.png" />
+
+  - Click on "currentTally".
+
+      <img src="media/04-15.png" />
+
+  - You should see 4 zeros: `[0, 0, 0, 0]`.
+
+      <img src="media/04-16.png" />
 
   </details>
 
@@ -572,7 +582,21 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on the arrow to the right of "vote".
+
+      <img src="media/04-17.png" />
+
+  - Input `1` on the `option` box.
+
+      <img src="media/04-18.png" />
+
+  - Click "transact".
+
+      <img src="media/04-19.png" />
+
+  - The transaction should succeed, and you should see a new green checkmark appear in the console.
+
+      <img src="media/04-20.png" />
 
   </details>
 
@@ -581,7 +605,13 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on "currentTally" again.
+
+      <img src="media/04-21.png" />
+
+  - It should now return `[0, 1, 0, 0]`.
+
+      <img src="media/04-22.png" />
 
   </details>
 
@@ -590,7 +620,13 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on "vote" again.
+
+      <img src="media/04-23.png" />
+
+  - You should see a red cross on the console, meaning the transaction failed. It should also read the reason: "Already voted: the same person can't vote twice."
+
+      <img src="media/04-24.png" />
 
   </details>
 
@@ -599,7 +635,21 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Scroll all the way up, and select the second account. This now becomes our address.
+
+      <img src="media/04-25.png" />
+
+  - Scroll all the way back down to "vote" and click it again.
+
+      <img src="media/04-26.png" />
+
+  - You should see a red cross on the console, meaning the transaction failed. It should also read the reason: "Unregistered user: user must be present in FractalRegistry."
+
+      <img src="media/04-27.png" />
+
+  - In order to not confuse ourselves in later steps, let's select the first account again.
+
+      <img src="media/04-28.png" />
 
   </details>
 
@@ -608,7 +658,13 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on "currentTally" again.
+
+      <img src="media/04-29.png" />
+
+  - It should still return `[0, 1, 0, 0]`.
+
+      <img src="media/04-30.png" />
 
   </details>
 

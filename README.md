@@ -2,6 +2,10 @@
 
 A guide on how to interact with Fractal's [DID Registry](https://github.com/trustfractal/web3-identity#option-2-did-registry-lookup).
 
+See something wrong? Open up a pull request!
+
+See something that's confusing or just not immediately obvious? Open up an issue!
+
 ## ⚠️ Work in Progress ⚠️
 
 We're still building this guide. If you need help today, get in touch through <sales@fractal.id>.
@@ -12,14 +16,14 @@ To get our hands dirty with some mock data, we will:
 
 - Deploy a mock version of Fractal's [DID Registry](https://github.com/trustfractal/web3-identity/blob/main/FractalRegistry.sol)
 - Understand how Fractal operates this contract
-- Create voting contract, and require its vote function to only be called once per person
-- Create a buyable ERC20 token, and require its mint function to be called by KYC-approved addresses
+- Create a voting contract, and require its vote function to only be called once per person
+- Create a buyable ERC20 token with a mint function that can only be called by address we know are KYC-approved
 
 This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstrations, in order to familiarize yourself with the concepts. After that, go through the demonstrations, in order to get hands-on experience and build a strong intuition.
 
 ## Setup and deploy
 
-For these demonstrations, we'll be using Remix IDE, which includes an in-browser Ethereum implementation, so we don't spend real money or have to chase down testnet faucets. However, don't worry, real-world operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
+For these demonstrations, we'll be using Remix IDE, which includes an in-browser Ethereum implementation. This way we don't spend real money or have to chase down testnet faucets. Don't worry, real-world operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
@@ -130,7 +134,33 @@ Let's use ourselves as an example. Let's pretend Fractal assigned us the `fracta
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on the arrow to the left of the deployed contract. This will reveal the contract's functions.
+
+      <img src="media/02-01.png" />
+
+  - Scroll down and click on the arrow to the right of "addUserAddre...". This will show the input boxes to put in arguments to make a call to `addUserAddress`.
+
+      <img src="media/02-02.png" />
+
+  - Scroll all the way up, and copy your own address.
+
+      <img src="media/02-03.png" />
+
+  - Scroll back down to the `addUserAddress` input boxes, and paste your own address in the `addr` box.
+
+      <img src="media/02-04.png" />
+
+  - Paste `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF` on the `fractalId` box.
+
+      <img src="media/02-05.png" />
+
+  - Click "transact".
+
+      <img src="media/02-06.png" />
+
+  - The transaction should go through successfully. You should see a new green checkmark appear in the console informing us that the call to `FractalRegistry.addUserAddress` has been successful.
+
+      <img src="media/02-07.png" />
 
   </details>
 
@@ -163,7 +193,25 @@ Let's pretend we're a Swedish citizen (`se`) living in the Åland Islands (`ax`)
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Look for, and click on the arrow to the right of `addUserToList`.
+
+      <img src="media/02-08.png" />
+
+  - Paste `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF` on the `userId` box.
+
+      <img src="media/02-09.png" />
+
+  - Paste `citizenship_se` on the `listId` box.
+
+      <img src="media/02-10.png" />
+
+  - Click "transact".
+
+      <img src="media/02-11.png" />
+
+  - The transaction should go through successfully. You should see a new green checkmark appear in the console informing us that the call to `FractalRegistry.addUserToList` has been successful.
+
+      <img src="media/02-12.png" />
 
   </details>
 
@@ -175,7 +223,17 @@ Let's pretend we're a Swedish citizen (`se`) living in the Åland Islands (`ax`)
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `residency_ax` on the `listId` box.
+
+      <img src="media/02-13.png" />
+
+  - Click "transact".
+
+      <img src="media/02-14.png" />
+
+  - The transaction should go through successfully. You should see a new green checkmark appear in the console informing us that the call to `FractalRegistry.addUserToList` has been successful.
+
+      <img src="media/02-15.png" />
 
   </details>
 
@@ -187,7 +245,17 @@ Let's pretend we're a Swedish citizen (`se`) living in the Åland Islands (`ax`)
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `plus` on the `listId` box.
+
+      <img src="media/02-16.png" />
+
+  - Click "transact".
+
+      <img src="media/02-17.png" />
+
+  - The transaction should go through successfully. You should see a new green checkmark appear in the console informing us that the call to `FractalRegistry.addUserToList` has been successful.
+
+      <img src="media/02-18.png" />
 
   </details>
 
@@ -217,7 +285,25 @@ Let's see how to contract responds to querying for own address, and an arbitrary
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Look for, and click on the arrow to the right of `getFractalId`.
+
+      <img src="media/03-01.png" />
+
+  - Scroll all the way up, and copy your own address.
+
+      <img src="media/03-02.png" />
+
+  - Paste your own address on the `addr` box.
+
+      <img src="media/03-03.png" />
+
+  - Click "call".
+
+      <img src="media/03-04.png" />
+
+  - The call should be successful. Remix does output some details to the console but, more importantly, the result of the call is displayed just below it. We can see that our call returned `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`, which is the `fractalId` we assigned to our address previously in this guide.
+
+      <img src="media/03-05.png" />
 
   </details>
 
@@ -230,7 +316,17 @@ Let's see how to contract responds to querying for own address, and an arbitrary
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `0x05a56E2D52c817161883f50c441c3228CFe54d9f` on the `addr` box.
+
+      <img src="media/03-06.png" />
+
+  - Click "call".
+
+      <img src="media/03-07.png" />
+
+  - The call should be successful and have returned `0x0000000000000000000000000000000000000000000000000000000000000000`.
+
+      <img src="media/03-08.png" />
 
   </details>
 
@@ -273,7 +369,25 @@ Let's see how to contract responds to querying for own lists, and an some other 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Look for, and click on the arrow to the right of `isUserInList`.
+
+      <img src="media/03-09.png" />
+
+  - Paste `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF` on the `userId` box.
+
+      <img src="media/03-10.png" />
+
+  - Paste `citizenship_se` on the `listId` box.
+
+      <img src="media/03-11.png" />
+
+  - Click "call".
+
+      <img src="media/03-12.png" />
+
+  - The call should be successful and have returned `true`.
+
+      <img src="media/03-13.png" />
 
   </details>
 
@@ -285,7 +399,17 @@ Let's see how to contract responds to querying for own lists, and an some other 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `residency_ax` on the `listId` box.
+
+      <img src="media/03-14.png" />
+
+  - Click "call".
+
+      <img src="media/03-15.png" />
+
+  - The call should be successful and have returned `true`.
+
+      <img src="media/03-16.png" />
 
   </details>
 
@@ -297,7 +421,17 @@ Let's see how to contract responds to querying for own lists, and an some other 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `citizenship_dk` on the `listId` box.
+
+      <img src="media/03-17.png" />
+
+  - Click "call".
+
+      <img src="media/03-18.png" />
+
+  - The call should be successful and have returned `false`.
+
+      <img src="media/03-19.png" />
 
   </details>
 
@@ -309,7 +443,17 @@ Let's see how to contract responds to querying for own lists, and an some other 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Paste `residency_fi` on the `listId` box.
+
+      <img src="media/03-20.png" />
+
+  - Click "call".
+
+      <img src="media/03-21.png" />
+
+  - The call should be successful and have returned `false`.
+
+      <img src="media/03-22.png" />
 
   </details>
 
@@ -360,7 +504,57 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - On the file browser on the left, click "contracts", and then "contracts/2_Voting.sol".
+
+    <img src="media/04-01.png" />
+
+  - With that file open, click on the "Solidity compiler" tab.
+
+    <img src="media/04-02.png" />
+
+  - Click on the "Compile 2_Voting.sol" button.
+
+    <img src="media/04-03.png" />
+
+  - Everything should go well, and you should see a green checkmark on the tab.
+
+    <img src="media/04-04.png" />
+
+  - Next, click on the "Deploy & run transactions" tab.
+
+    <img src="media/04-05.png" />
+
+  - Make sure the Voting contract is selected.
+
+    <img src="media/04-06.png" />
+
+  - Click on the arrow to the right of the Deploy button. This should show the argument input boxes.
+
+    <img src="media/04-07.png" />
+
+  - Copy your FractalRegistry address.
+
+    <img src="media/04-08.png" />
+
+  - Input `4` in the `options` box.
+
+    <img src="media/04-09.png" />
+
+  - Paste it in the `registryAddress` box.
+
+    <img src="media/04-10.png" />
+
+  - Click "transact".
+
+    <img src="media/04-11.png" />
+
+  - The contract is now deployed. You should see a success message on the console on the bottom.
+
+    <img src="media/04-12.png" />
+
+  - If you scroll all the way to the bottom, you should now have a Voting contract entry.
+
+    <img src="media/04-13.png" />
 
   </details>
 
@@ -369,7 +563,17 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on the arrow to the left of the deployed contract. This will reveal the contract's functions.
+
+      <img src="media/04-14.png" />
+
+  - Click on "currentTally".
+
+      <img src="media/04-15.png" />
+
+  - You should see 4 zeros: `[0, 0, 0, 0]`.
+
+      <img src="media/04-16.png" />
 
   </details>
 
@@ -378,7 +582,21 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on the arrow to the right of "vote".
+
+      <img src="media/04-17.png" />
+
+  - Input `1` on the `option` box.
+
+      <img src="media/04-18.png" />
+
+  - Click "transact".
+
+      <img src="media/04-19.png" />
+
+  - The transaction should succeed, and you should see a new green checkmark appear in the console.
+
+      <img src="media/04-20.png" />
 
   </details>
 
@@ -387,7 +605,13 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on "currentTally" again.
+
+      <img src="media/04-21.png" />
+
+  - It should now return `[0, 1, 0, 0]`.
+
+      <img src="media/04-22.png" />
 
   </details>
 
@@ -396,7 +620,13 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on "vote" again.
+
+      <img src="media/04-23.png" />
+
+  - You should see a red cross on the console, meaning the transaction failed. It should also read the reason: "Already voted: the same person can't vote twice."
+
+      <img src="media/04-24.png" />
 
   </details>
 
@@ -405,7 +635,21 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Scroll all the way up, and select the second account. This now becomes our address.
+
+      <img src="media/04-25.png" />
+
+  - Scroll all the way back down to "vote" and click it again.
+
+      <img src="media/04-26.png" />
+
+  - You should see a red cross on the console, meaning the transaction failed. It should also read the reason: "Unregistered user: user must be present in FractalRegistry."
+
+      <img src="media/04-27.png" />
+
+  - In order to not confuse ourselves in later steps, let's select the first account again.
+
+      <img src="media/04-28.png" />
 
   </details>
 
@@ -414,7 +658,13 @@ Let's try it out and see how it behaves!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on "currentTally" again.
+
+      <img src="media/04-29.png" />
+
+  - It should still return `[0, 1, 0, 0]`.
+
+      <img src="media/04-30.png" />
 
   </details>
 
@@ -448,9 +698,9 @@ function buy() external payable {
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-The DemoToken contract, which can be found at `contracts/3_DemoToken.sol`, is a toy ERC20 token with a `buy` method that, when it receives funds from a KYC-approved account with the `plus` level, mints (i.e. creates) new tokens. In order to portray the common requirement of disallowing certain countries, the contract rejects Fiji (`fj`) residents and Iceland (`is`) citizens.
+The DemoToken contract, which can be found at `contracts/3_DemoToken.sol`, is a toy ERC20 token with a `buy` function that, when it receives funds from a KYC-approved account with the `plus` level, mints (i.e. creates) new tokens. In order to portray the common requirement of disallowing certain countries, the contract rejects Fiji (`fj`) residents and Iceland (`is`) citizens.
 
-In order to make things simpler, we're going to be reusing the [OpenZeppelin's ERC20 implementation](https://docs.openzeppelin.com/contracts/4.x/erc20). It brings along a lot of standard ERC20 methods but, for this demo, we only care about `balance`, which will let us check our balance.
+In order to make things simpler, we're going to be reusing the [OpenZeppelin's ERC20 implementation](https://docs.openzeppelin.com/contracts/4.x/erc20). It brings along a lot of standard ERC20 functions but, for this demo, we only care about `balance`, which will let us check our balance.
 
 Let's try it out and see it working!
 
@@ -461,7 +711,49 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - On the file browser on the left, click "contracts", and then "contracts/3_DemoToken.sol".
+
+    <img src="media/05-01.png" />
+
+  - With that file open, click on the "Solidity compiler" tab.
+
+    <img src="media/05-02.png" />
+
+  - Click on the "Compile 3_DemoToken.sol" button.
+
+    <img src="media/05-03.png" />
+
+  - Everything should go well, and you should see a green checkmark on the tab.
+
+    <img src="media/05-04.png" />
+
+  - Next, click on the "Deploy & run transactions" tab.
+
+    <img src="media/05-05.png" />
+
+  - Make sure the DemoToken contract is selected.
+
+    <img src="media/05-06.png" />
+
+  - Click on the arrow to the right of the Deploy button. This should show the argument input box.
+
+    <img src="media/05-07.png" />
+
+  - Copy your FractalRegistry address.
+
+    <img src="media/05-08.png" />
+
+  - Paste it in the `registryAddress` box.
+
+    <img src="media/05-09.png" />
+
+  - Click "transact".
+
+    <img src="media/05-10.png" />
+
+  - The contract is now deployed. You should see a success message on the console on the bottom. If you scroll all the way to the bottom on the left, you should now have a DemoToken contract entry.
+
+    <img src="media/05-11.png" />
 
   </details>
 
@@ -470,7 +762,17 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Scroll all the way up, and copy your own address.
+
+    <img src="media/05-12.png" />
+
+  - Scroll back down, and paste it on the box to the right of "balanceOf" button. Press it to make the call.
+
+    <img src="media/05-13.png" />
+
+  - It should return `0`.
+
+    <img src="media/05-14.png" />
 
   </details>
 
@@ -479,7 +781,17 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Scroll all the way up, until you see the "Value" input box, and put `42` in it.
+
+    <img src="media/05-15.png" />
+
+  - Scroll back down, and click the "buy" button.
+
+    <img src="media/05-16.png" />
+
+  - The transaction should succeed, and you should see a new green checkmark appear in the console.
+
+      <img src="media/05-17.png" />
 
   </details>
 
@@ -488,7 +800,9 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click "balanceOf" again. It should now return `42`.
+
+    <img src="media/05-18.png" />
 
   </details>
 
@@ -497,7 +811,49 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - If necessary, click on the arrow to the left of the FractalRegistry contract. This will reveal the contract's functions.
+
+    <img src="media/05-19.png" />
+
+  - If necessary, click on the arrow to the right of "removeUserFr...". This will reveal the function's argument input boxes.
+
+    <img src="media/05-20.png" />
+
+  - In the "userId" box, input `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`.
+
+    <img src="media/05-21.png" />
+
+  - In the "listId" box, input `residency_ax`.
+
+    <img src="media/05-22.png" />
+
+  - Click "transact".
+
+    <img src="media/05-23.png" />
+
+  - The transaction should succeed, and you should see a new green checkmark appear in the console.
+
+      <img src="media/05-24.png" />
+
+  - If necessary, click on the arrow to the right of "addUserToList". This will reveal the function's argument input boxes.
+
+    <img src="media/05-25.png" />
+
+  - In the "userId" box, input `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`.
+
+    <img src="media/05-26.png" />
+
+  - In the "listId" box, input `residency_fj`.
+
+    <img src="media/05-27.png" />
+
+  - Click "transact".
+
+    <img src="media/05-28.png" />
+
+  - The transaction should succeed, and you should see a new green checkmark appear in the console.
+
+      <img src="media/05-29.png" />
 
   </details>
 
@@ -506,7 +862,13 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on "buy" again.
+
+      <img src="media/05-30.png" />
+
+  - You should see a red cross on the console, meaning the transaction failed. It should also read the reason: "Non KYC-compliant sender."
+
+      <img src="media/05-31.png" />
 
   </details>
 

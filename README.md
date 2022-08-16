@@ -711,7 +711,49 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - On the file browser on the left, click "contracts", and then "contracts/3_DemoToken.sol".
+
+    <img src="media/05-01.png" />
+
+  - With that file open, click on the "Solidity compiler" tab.
+
+    <img src="media/05-02.png" />
+
+  - Click on the "Compile 3_DemoToken.sol" button.
+
+    <img src="media/05-03.png" />
+
+  - Everything should go well, and you should see a green checkmark on the tab.
+
+    <img src="media/05-04.png" />
+
+  - Next, click on the "Deploy & run transactions" tab.
+
+    <img src="media/05-05.png" />
+
+  - Make sure the DemoToken contract is selected.
+
+    <img src="media/05-06.png" />
+
+  - Click on the arrow to the right of the Deploy button. This should show the argument input box.
+
+    <img src="media/05-07.png" />
+
+  - Copy your FractalRegistry address.
+
+    <img src="media/05-08.png" />
+
+  - Paste it in the `registryAddress` box.
+
+    <img src="media/05-09.png" />
+
+  - Click "transact".
+
+    <img src="media/05-10.png" />
+
+  - The contract is now deployed. You should see a success message on the console on the bottom. If you scroll all the way to the bottom on the left, you should now have a DemoToken contract entry.
+
+    <img src="media/05-11.png" />
 
   </details>
 

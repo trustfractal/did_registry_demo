@@ -762,7 +762,17 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Scroll all the way up, and copy your own address.
+
+    <img src="media/05-12.png" />
+
+  - Scroll back down, and paste it on the box to the right of "balanceOf" button. Press it to make the call.
+
+    <img src="media/05-13.png" />
+
+  - It should return `0`.
+
+    <img src="media/05-14.png" />
 
   </details>
 
@@ -771,7 +781,17 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Scroll all the way up, until you see the "Value" input box, and put `42` in it.
+
+    <img src="media/05-15.png" />
+
+  - Scroll back down, and click the "buy" button.
+
+    <img src="media/05-16.png" />
+
+  - The transaction should succeed, and you should see a new green checkmark appear in the console.
+
+      <img src="media/05-17.png" />
 
   </details>
 
@@ -780,7 +800,9 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click "balanceOf" again. It should now return `42`.
+
+    <img src="media/05-18.png" />
 
   </details>
 
@@ -789,7 +811,49 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - If necessary, click on the arrow to the left of the FractalRegistry contract. This will reveal the contract's functions.
+
+    <img src="media/05-19.png" />
+
+  - If necessary, click on the arrow to the right of "removeUserFr...". This will reveal the function's argument input boxes.
+
+    <img src="media/05-20.png" />
+
+  - In the "userId" box, input `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`.
+
+    <img src="media/05-21.png" />
+
+  - In the "listId" box, input `residency_ax`.
+
+    <img src="media/05-22.png" />
+
+  - Click "transact".
+
+    <img src="media/05-23.png" />
+
+  - The transaction should succeed, and you should see a new green checkmark appear in the console.
+
+      <img src="media/05-24.png" />
+
+  - If necessary, click on the arrow to the right of "addUserToList". This will reveal the function's argument input boxes.
+
+    <img src="media/05-25.png" />
+
+  - In the "userId" box, input `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`.
+
+    <img src="media/05-26.png" />
+
+  - In the "listId" box, input `residency_fj`.
+
+    <img src="media/05-27.png" />
+
+  - Click "transact".
+
+    <img src="media/05-28.png" />
+
+  - The transaction should succeed, and you should see a new green checkmark appear in the console.
+
+      <img src="media/05-29.png" />
 
   </details>
 
@@ -798,7 +862,13 @@ Let's try it out and see it working!
   <details>
     <summary>📸 Step-by-step screenshots</summary>
 
-  TODO-screenshots
+  - Click on "buy" again.
+
+      <img src="media/05-30.png" />
+
+  - You should see a red cross on the console, meaning the transaction failed. It should also read the reason: "Non KYC-compliant sender."
+
+      <img src="media/05-31.png" />
 
   </details>
 

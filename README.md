@@ -17,7 +17,7 @@ To get our hands dirty with some mock data, we will:
 - Deploy a mock version of Fractal's [DID Registry](https://github.com/trustfractal/web3-identity/blob/main/FractalRegistry.sol)
 - Understand how Fractal operates this contract
 - Create a voting contract, and require its vote function to only be called once per person
-- Create a buyable ERC20 token with a mint function that can only be called by address we know are KYC-approved
+- Create a buyable ERC20 token with a mint function that can only be called by an address we know are KYC-approved
 
 This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstrations, in order to familiarize yourself with the concepts. After that, go through the demonstrations, in order to get hands-on experience and build a strong intuition.
 
@@ -63,7 +63,7 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
   </details>
 
-- Compile and deploy the `contracts/1_FractalRegistry.sol` contract. Use your own address as `root`.
+- Compile and deploy the `contracts/1_FractalRegistry.sol` contract. Use your own address as the `root` constructor argument.
 
   <details>
     <summary>📸 Step-by-step screenshots</summary>
@@ -470,7 +470,7 @@ There's two other relevant public functions on the contract. Going over them bri
 
 ### One person, one vote
 
-An example use case of `fractalId`'s pre-person uniqueness is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote, effectively requiring personhood and achieving Sybil-resistance.
+An example use case of `fractalId`'s pre-person uniqueness is having a voting contract where you require the voter to be in the Registry and for a person to only be able to cast one vote, effectively requiring unique personhood and achieving Sybil-resistance.
 
 Here's a simplified example:
 

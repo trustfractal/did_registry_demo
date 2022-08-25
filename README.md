@@ -8,7 +8,7 @@ See something that's confusing or just not immediately obvious? Open up an issue
 
 ## ⚠️ Work in Progress ⚠️
 
-We're still building this guide. If you need help today, get in touch through <sales@fractal.id>.
+We're still building this guide. If you need help today, get in touch through <engineering@fractal.id>.
 
 ## Overview
 

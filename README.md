@@ -12,18 +12,17 @@ We're still building this guide. If you need help today, get in touch through <e
 
 ## Overview
 
-To get our hands dirty with some mock data, we will:
+To get our hands dirty with some mock data, we will go through:
 
-- Deploy a mock version of Fractal's [DID Registry](https://github.com/trustfractal/web3-identity/blob/main/FractalRegistry.sol)
-- Understand how Fractal operates this contract
-- Create a voting contract, and require its vote function to only be called once per person
-- Create a buyable ERC20 token with a mint function that can only be called by an address we know are KYC-approved
+- Deploy our own copy of Fractal's [DID Registry](https://github.com/trustfractal/web3-identity/blob/main/FractalRegistry.sol)
+- Operation of the contract
+- Usage examples
+  - One person, one vote
+  - Require KYC approval for buying tokens
 
-This guide includes step-by-step demonstration sections. We encourage you to have a first shallow read, without going into the demonstrations, in order to familiarize yourself with the concepts. After that, go through the demonstrations, in order to get hands-on experience and build a strong intuition.
+## Deploy our own copy of Fractal's DID Registry
 
-## Setup and deploy
-
-For these demonstrations, we'll be using Remix IDE, which includes an in-browser Ethereum implementation. This way we don't spend real money or have to chase down testnet faucets. Don't worry, real-world operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
+For these demonstrations, we'll deploy our own copy of Fractal's DID Registry. We'll be using [Remix IDE](https://remix.ethereum.org/), which includes an in-browser Ethereum implementation. This way we don't spend real money or have to chase down testnet faucets. Don't worry, real-world operation is effectively identical, everything you'll see here can also be done with [Hardhat](https://hardhat.org/) or any other EVM toolchain you prefer.
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
@@ -874,7 +873,7 @@ Let's try it out and see it working!
 
 </details>
 
-### Using client-side JavaScript
+## Using client-side JavaScript
 
 Since the main goal of the DID Registry is to be a readable resource, you can also use it off chain directly from your dApp's code!
 
@@ -882,4 +881,4 @@ Since the main goal of the DID Registry is to be a readable resource, you can al
 
 > ⚠️ TODO Add contract addresses (for the various networks) and ABI.
 
-> ⚠️ TODO Add link to a demo app.
+> ⚠️ TODO Point people at <https://github.com/trustfractal/did-registry-demo-dapp>

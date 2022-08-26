@@ -115,10 +115,16 @@ So, what does Fractal do with the contract? And, more importantly, what can we d
 
 ### On user KYC approval
 
-When a user submits their documents and our identity specialist verify their identity, if they've associated an EVM address with their account, our servers call `addUserAddress` with two arguments:
+When a user submits their documents and our identity specialist verify their identity, our servers call `addUserAddress` with two arguments:
 
 - the user's EVM address
 - a personally unique identifier, called `fractalId`
+
+In order to be sure we're not duplicating users and we know their wallet address, a user needs to be onboarded with one of the following level combinations, with optionally more add-ons:
+
+- `uniqueness+wallet`
+- `basic+uniq+wallet`
+- `plus+uniq+wallet`
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>

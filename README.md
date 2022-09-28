@@ -1,6 +1,6 @@
 # DID Registry demo
 
-A guide on how to interact with Fractal's [DID Registry](https://github.com/trustfractal/web3-identity#option-2-did-registry-lookup).
+A guide on how to interact with Fractal's [DID Registry](https://www.notion.so/fractal/Fractal-Product-Overview-2c63841aebaf4000b96f1c44c1680ad1#44aec71477e347bbbba4a4bd7d3169a3).
 
 See something wrong? Open up a pull request!
 

@@ -171,7 +171,14 @@ Let's use ourselves as an example. Let's pretend Fractal assigned us the `fracta
 
 </details>
 
-Fractal's servers also make a few `addUserToList` calls with the relevant lists. Currently, there's only two lists, `basic` and `plus`, which correspond to the [KYC levels](https://docs.developer.fractal.id/kyc-levels). If a user is in one of these two lists, they have passed the KYC checks for that level.
+Fractal's servers also make a few `addUserToList` calls with the relevant lists. Let's take a look at lists currently in use, and what it means for a user to be present in each of them.
+
+| listId       | Meaning                                                                                              |
+| ------------ | ---------------------------------------------------------------------------------------------------- |
+| `basic`      | The user has passed the `basic` [KYC level](https://docs.developer.fractal.id/kyc-levels).           |
+| `plus`       | The user has passed the `plus` [KYC level](https://docs.developer.fractal.id/kyc-levels).            |
+| `fatf_grey`  | Resident of a country that's present in the FATF's list of jurisdictions under increased monitoring. |
+| `fatf_black` | Resident of a country that's present in the FATF's list of high-risk jurisdictions.                  |
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
@@ -283,16 +290,25 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
 ### KYC levels
 
-After you get the user's `fractalId`, you can then check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status.
+After you get the user's `fractalId`, you can then check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status and/or FATF list presence.
 
 Here are a few examples:
 
 ```solidity
+// Passed Basic KYC level
+registry.isUserInList(fractalId, "basic")
+
 // Passed Plus KYC level
 registry.isUserInList(fractalId, "plus")
 
-// Passed Basic KYC level
-registry.isUserInList(fractalId, "basic")
+// Passed Basic or Plus KYC level
+registry.isUserInList(fractalId, "basic") ||
+    registry.isUserInList(fractalId, "plus")
+
+// Passed Plus KYC level and is not in either FATF lists
+registry.isUserInList(fractalId, "plus") &&
+    !registry.isUserInList(fractalId, "fatf_grey") &&
+    !registry.isUserInList(fractalId, "fatf_black")
 ```
 
 <details>
@@ -337,19 +353,19 @@ Let's see how to contract responds to querying for own lists, and an some other 
 
     <!--details>
       <summary>📸 Step-by-step screenshots</summary>
-
+  
   - Paste `basic` on the `listId` box.
-
+  
       <img src="media/03-XX.png" />
-
+  
   - Click "call".
-
+  
       <img src="media/03-XX.png" />
-
+  
   - The call should be successful and have returned `false`.
-
+  
       <img src="media/03-XX.png" />
-
+  
     </details-->
   </details>
 

@@ -885,6 +885,6 @@ Since the main goal of the DID Registry is to be a readable resource, you can al
 
 > ⚠️ TODO Add a brief web3.js example.
 
-> ⚠️ TODO Add contract addresses (for the various networks) and ABI.
+> ⚠️ TODO Add contract addresses (for the various networks) and ABI. They're now at <https://github.com/trustfractal/registry-deployer/tree/master/deployments>
 
 > ⚠️ TODO Point people at <https://github.com/trustfractal/did-registry-demo-dapp>

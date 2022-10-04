@@ -27,13 +27,13 @@ For these demonstrations, we'll deploy our own copy of Fractal's DID Registry. W
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-In order to make this guide accessible to non-blockchain developers, we've included step-by-step screenshots. If you're a blockchain developer and you're familiar with Remix IDE, feel free to skip these.
+<!-- In order to make this guide accessible to non-blockchain developers, we've included step-by-step screenshots. If you're a blockchain developer and you're familiar with Remix IDE, feel free to skip these. -->
 
 Let's get started! First off, let's start by deploying our own copy of a FractalRegistry.
 
 - Go to [Remix IDE](https://remix.ethereum.org/) and clone this git repo as a workspace.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - On your browser, go to `https://remix.ethereum.org/`. Accept or decline their analytics collection.
@@ -60,11 +60,11 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
     <img src="media/01-06.png" />
 
-  </details>
+  </details-->
 
 - Compile and deploy the `contracts/1_FractalRegistry.sol` contract. Use your own address as the `root` constructor argument.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - On the file browser on the left, click "contracts", and then "1_FractalRegistry.sol".
@@ -105,7 +105,7 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
   We now have a working FractalRegistry deployment to play around with! 🎉
 
-  </details>
+  </details-->
 
 </details>
 
@@ -136,7 +136,7 @@ Let's use ourselves as an example. Let's pretend Fractal assigned us the `fracta
   - `addr`: our own address
   - `fractalId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on the arrow to the left of the deployed contract. This will reveal the contract's functions.
@@ -167,35 +167,30 @@ Let's use ourselves as an example. Let's pretend Fractal assigned us the `fracta
 
       <img src="media/02-07.png" />
 
-  </details>
+  </details-->
 
 </details>
 
-Fractal's servers also make a few `addUserToList` calls with the relevant lists. There are three categories of lists:
+Fractal's servers also make a few `addUserToList` calls with the relevant lists. Let's take a look at lists currently in use, and what it means for a user to be present in each of them.
 
-- KYC level
-
-  There are two lists -- `basic` and `plus` -- which correspond to the [KYC levels](https://docs.developer.fractal.id/kyc-levels). If a user is in one of these two lists, they have passed the KYC checks for that level.
-
-- Residency
-
-  There's a list per country, with the format `residency_XX`, where `XX` is the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. For example, Spain has the code `es`, and there's a corresponding `residency_es` list. If a user is in one of these lists, Fractal has verified they reside in the respective country.
-
-- Citizenship
-
-  There's a list per country, with the format `citizenship_XX`, where `XX` is the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. For example, Italy has the code `it`, and there's a corresponding `citizenship_it` list. If a user is in one of these lists, Fractal has verified they are a citizen of the respective country.
+| listId       | Meaning                                                                                              |
+| ------------ | ---------------------------------------------------------------------------------------------------- |
+| `basic`      | The user has passed the `basic` [KYC level](https://docs.developer.fractal.id/kyc-levels).           |
+| `plus`       | The user has passed the `plus` [KYC level](https://docs.developer.fractal.id/kyc-levels).            |
+| `fatf_grey`  | Resident of a country that's present in the FATF's list of jurisdictions under increased monitoring. |
+| `fatf_black` | Resident of a country that's present in the FATF's list of high-risk jurisdictions.                  |
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-Let's pretend we're a Swedish citizen (`se`) living in the Åland Islands (`ax`) that has passed the Plus KYC level (`plus`).
+Let's pretend we've passed the Plus KYC level (`plus`).
 
 - Make a `addUserToList` call with:
 
   - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
-  - `listId`: `citizenship_se`
+  - `listId`: `plus`
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Look for, and click on the arrow to the right of `addUserToList`.
@@ -205,50 +200,6 @@ Let's pretend we're a Swedish citizen (`se`) living in the Åland Islands (`ax`)
   - Paste `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF` on the `userId` box.
 
       <img src="media/02-09.png" />
-
-  - Paste `citizenship_se` on the `listId` box.
-
-      <img src="media/02-10.png" />
-
-  - Click "transact".
-
-      <img src="media/02-11.png" />
-
-  - The transaction should go through successfully. You should see a new green checkmark appear in the console informing us that the call to `FractalRegistry.addUserToList` has been successful.
-
-      <img src="media/02-12.png" />
-
-  </details>
-
-- Make a `addUserToList` call with:
-
-  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
-  - `listId`: `residency_ax`
-
-  <details>
-    <summary>📸 Step-by-step screenshots</summary>
-
-  - Paste `residency_ax` on the `listId` box.
-
-      <img src="media/02-13.png" />
-
-  - Click "transact".
-
-      <img src="media/02-14.png" />
-
-  - The transaction should go through successfully. You should see a new green checkmark appear in the console informing us that the call to `FractalRegistry.addUserToList` has been successful.
-
-      <img src="media/02-15.png" />
-
-  </details>
-
-- Make a `addUserToList` call with:
-
-  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
-  - `listId`: `plus`
-
-  <details>
-    <summary>📸 Step-by-step screenshots</summary>
 
   - Paste `plus` on the `listId` box.
 
@@ -262,7 +213,7 @@ Let's pretend we're a Swedish citizen (`se`) living in the Åland Islands (`ax`)
 
       <img src="media/02-18.png" />
 
-  </details>
+  </details-->
 
 </details>
 
@@ -287,7 +238,7 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
   `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Look for, and click on the arrow to the right of `getFractalId`.
@@ -310,7 +261,7 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
       <img src="media/03-05.png" />
 
-  </details>
+  </details-->
 
 - Make a `getFractalId` call with:
   - `addr`: some arbitrary valid address. Here's an example: `0x05a56E2D52c817161883f50c441c3228CFe54d9f`
@@ -318,7 +269,7 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
   `0x0000000000000000000000000000000000000000000000000000000000000000`
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Paste `0x05a56E2D52c817161883f50c441c3228CFe54d9f` on the `addr` box.
@@ -333,32 +284,31 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
       <img src="media/03-08.png" />
 
-  </details>
+  </details-->
 
 </details>
 
-### KYC levels, residency, and citizenship
+### KYC levels
 
-After you get the user's `fractalId`, you can then check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status, residency, and citizenship.
+After you get the user's `fractalId`, you can then check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status and/or FATF list presence.
 
 Here are a few examples:
 
 ```solidity
-// Plus KYC level, and not resident in Fiji, and not a Iceland citizen.
-registry.isUserInList(fractalId, "plus") &&
-    !registry.isUserInList(fractalId, "residency_fj") &&
-    !registry.isUserInList(fractalId, "citizenship_is")
+// Passed Basic KYC level
+registry.isUserInList(fractalId, "basic")
 
-// Basic KYC level, and resides in Portugal or Spain.
-registry.isUserInList(fractalId, "basic") &&
-    (
-      registry.isUserInList(fractalId, "residency_pt") ||
-      registry.isUserInList(fractalId, "residency_es")
-    )
+// Passed Plus KYC level
+registry.isUserInList(fractalId, "plus")
 
-// Basic or Plus KYC level, no residency or citizenship requirements.
+// Passed Basic or Plus KYC level
 registry.isUserInList(fractalId, "basic") ||
     registry.isUserInList(fractalId, "plus")
+
+// Passed Plus KYC level and is not in either FATF lists
+registry.isUserInList(fractalId, "plus") &&
+    !registry.isUserInList(fractalId, "fatf_grey") &&
+    !registry.isUserInList(fractalId, "fatf_black")
 ```
 
 <details>
@@ -368,10 +318,10 @@ Let's see how to contract responds to querying for own lists, and an some other 
 
 - Make a `isUserInList` call with:
   - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
-  - `listId`: `citizenship_se`
+  - `listId`: `plus`
 - Verify that you get back `true`.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Look for, and click on the arrow to the right of `isUserInList`.
@@ -382,94 +332,49 @@ Let's see how to contract responds to querying for own lists, and an some other 
 
       <img src="media/03-10.png" />
 
-  - Paste `citizenship_se` on the `listId` box.
+  - Paste `plus` on the `listId` box.
 
-      <img src="media/03-11.png" />
+      <img src="media/03-XX.png" />
 
   - Click "call".
 
-      <img src="media/03-12.png" />
+      <img src="media/03-XX.png" />
 
   - The call should be successful and have returned `true`.
 
-      <img src="media/03-13.png" />
+      <img src="media/03-XX.png" />
 
-  </details>
-
-- Make a `isUserInList` call with:
-  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
-  - `listId`: `residency_ax`
-- Verify that you get back `true`.
-
-  <details>
-    <summary>📸 Step-by-step screenshots</summary>
-
-  - Paste `residency_ax` on the `listId` box.
-
-      <img src="media/03-14.png" />
-
-  - Click "call".
-
-      <img src="media/03-15.png" />
-
-  - The call should be successful and have returned `true`.
-
-      <img src="media/03-16.png" />
-
-  </details>
+  </details-->
 
 - Make a `isUserInList` call with:
   - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
-  - `listId`: `citizenship_dk`
+  - `listId`: `basic`
 - Verify that you get back `false`.
 
-  <details>
-    <summary>📸 Step-by-step screenshots</summary>
-
-  - Paste `citizenship_dk` on the `listId` box.
-
-      <img src="media/03-17.png" />
-
+    <!--details>
+      <summary>📸 Step-by-step screenshots</summary>
+  
+  - Paste `basic` on the `listId` box.
+  
+      <img src="media/03-XX.png" />
+  
   - Click "call".
-
-      <img src="media/03-18.png" />
-
+  
+      <img src="media/03-XX.png" />
+  
   - The call should be successful and have returned `false`.
-
-      <img src="media/03-19.png" />
-
+  
+      <img src="media/03-XX.png" />
+  
+    </details-->
   </details>
-
-- Make a `isUserInList` call with:
-  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
-  - `listId`: `residency_fi`
-- Verify that you get back `false`.
-
-  <details>
-    <summary>📸 Step-by-step screenshots</summary>
-
-  - Paste `residency_fi` on the `listId` box.
-
-      <img src="media/03-20.png" />
-
-  - Click "call".
-
-      <img src="media/03-21.png" />
-
-  - The call should be successful and have returned `false`.
-
-      <img src="media/03-22.png" />
-
-  </details>
-
-</details>
 
 ### On user change or document expiration
 
 There's two other relevant public functions on the contract. Going over them briefly:
 
 - When a user removes (or changes) their associated EVM address, Fractal's servers call `removeUserAddress` appropriately (and, on change, also call `addUserAddress`).
-- When a user submits new information that changes their KYC, residency, or citizenship status, Fractal's servers will make the appropriate `removeUserFromList` (and possibly `addUserToList`) calls to keep the user's on-chain information up-to-date.
+- When a user submits new information that changes their KYC status, Fractal's servers will make the appropriate `removeUserFromList` (and possibly `addUserToList`) calls to keep the user's on-chain information up-to-date.
 
 ## Usage examples
 
@@ -506,7 +411,7 @@ Let's try it out and see how it behaves!
   - `options`: `4`. Nothing special about this choice.
   - `registryAddress`: the address of the FractalRegistry we've been using.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - On the file browser on the left, click "contracts", and then "contracts/2_Voting.sol".
@@ -561,11 +466,11 @@ Let's try it out and see how it behaves!
 
     <img src="media/04-13.png" />
 
-  </details>
+  </details-->
 
 - Let's call `currentTally`. It should show that all four options have zero votes.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on the arrow to the left of the deployed contract. This will reveal the contract's functions.
@@ -580,11 +485,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-16.png" />
 
-  </details>
+  </details-->
 
 - Let's call `vote` with option `1`. It should succeed.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on the arrow to the right of "vote".
@@ -603,11 +508,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-20.png" />
 
-  </details>
+  </details-->
 
 - Let's call `currentTally` again. It should show that option `1` has one vote, and that options `0`, `2`, and `3` have all zero votes.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on "currentTally" again.
@@ -618,11 +523,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-22.png" />
 
-  </details>
+  </details-->
 
 - Let's try calling `vote` again. This time, it should fail, with the reason "Already voted: the same person can't vote twice."
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on "vote" again.
@@ -633,11 +538,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-24.png" />
 
-  </details>
+  </details-->
 
 - Let's try calling `vote` with a different address, one that's not registered in our FractalRegistry contract. It should fail, with the reason "Unregistered user: user must be present in FractalRegistry."
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Scroll all the way up, and select the second account. This now becomes our address.
@@ -656,11 +561,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-28.png" />
 
-  </details>
+  </details-->
 
 - Let's call `currentTally` again. Even though we tried to execute a bunch of invalid votes, it should return the same results as before.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on "currentTally" again.
@@ -671,13 +576,13 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-30.png" />
 
-  </details>
+  </details-->
 
 </details>
 
 ### Require KYC approval for buying tokens
 
-An example use case of `fractalId` presence in specific lists is, in order to buy some ERC20 token, check that a user has passed KYC and that they're of a particular residency or citizenship.
+An example use case of `fractalId` presence in specific lists is, in order to buy some ERC20 token, check that a user has passed KYC.
 
 Here's a simplified example:
 
@@ -686,14 +591,8 @@ function buy() external payable {
   FractalRegistry registry = FractalRegistry(OXADDRESS);
   bytes32 fractalId = registry.getFractalId(msg.sender);
   require(
-      fractalId != 0 &&
-          registry.isUserInList(fractalId, "plus") &&
-          !registry.isUserInList(fractalId, "residency_fj") &&
-          !registry.isUserInList(fractalId, "citizenship_is"),
-      "Non KYC-compliant sender. "
-        "Must have cleared `plus` level, "
-        "not reside in Fiji, and "
-        "not be a Iceland citizen"
+      fractalId != 0 && registry.isUserInList(fractalId, "plus"),
+      "Non KYC-compliant sender: must have cleared `plus` level."
   );
 
   _mint(msg.sender, msg.value);
@@ -703,7 +602,7 @@ function buy() external payable {
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-The DemoToken contract, which can be found at `contracts/3_DemoToken.sol`, is a toy ERC20 token with a `buy` function that, when it receives funds from a KYC-approved account with the `plus` level, mints (i.e. creates) new tokens. In order to portray the common requirement of disallowing certain countries, the contract rejects Fiji (`fj`) residents and Iceland (`is`) citizens.
+The DemoToken contract, which can be found at `contracts/3_DemoToken.sol`, is a toy ERC20 token with a `buy` function that, when it receives funds from a KYC-approved account with the `plus` level, mints (i.e. creates) new tokens.
 
 In order to make things simpler, we're going to be reusing the [OpenZeppelin's ERC20 implementation](https://docs.openzeppelin.com/contracts/4.x/erc20). It brings along a lot of standard ERC20 functions but, for this demo, we only care about `balance`, which will let us check our balance.
 
@@ -713,12 +612,12 @@ Let's try it out and see it working!
 
   - `registryAddress`: the address of the FractalRegistry we've been using.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - On the file browser on the left, click "contracts", and then "contracts/3_DemoToken.sol".
 
-    <img src="media/05-01.png" />
+    <img src="media/05-XX.png" />
 
   - With that file open, click on the "Solidity compiler" tab.
 
@@ -760,11 +659,11 @@ Let's try it out and see it working!
 
     <img src="media/05-11.png" />
 
-  </details>
+  </details-->
 
 - Let's call `balance` for our own address. Since we didn't buy any tokens yet, it should be zero.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Scroll all the way up, and copy your own address.
@@ -779,11 +678,11 @@ Let's try it out and see it working!
 
     <img src="media/05-14.png" />
 
-  </details>
+  </details-->
 
-- Let's call `buy` with 42 Wei. Since we're in the `plus` list, we're not in the `residency_fj` list, and we're also not in the `citizenship_is` list, we should be successful!
+- Let's call `buy` with 42 Wei. Since we're in the `plus` list, we should be successful!
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Scroll all the way up, until you see the "Value" input box, and put `42` in it.
@@ -798,22 +697,22 @@ Let's try it out and see it working!
 
       <img src="media/05-17.png" />
 
-  </details>
+  </details-->
 
 - Let's call `balance` again. It should now return 42.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click "balanceOf" again. It should now return `42`.
 
     <img src="media/05-18.png" />
 
-  </details>
+  </details-->
 
-- In order to see an example of a non-compliant person trying to buy tokens, let's pretend we moved from the Åland Islands (`ax`) to Fiji (`fj`). Let's remove our `fractalId` from the list `residency_ax` add it to `residency_fj`.
+- In order to see an example of a non-compliant person trying to buy tokens, let's pretend our documents expired and Fractal's server took us off the `plus` list.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - If necessary, click on the arrow to the left of the FractalRegistry contract. This will reveal the contract's functions.
@@ -828,54 +727,34 @@ Let's try it out and see it working!
 
     <img src="media/05-21.png" />
 
-  - In the "listId" box, input `residency_ax`.
+  - In the "listId" box, input `plus`.
 
-    <img src="media/05-22.png" />
-
-  - Click "transact".
-
-    <img src="media/05-23.png" />
-
-  - The transaction should succeed, and you should see a new green checkmark appear in the console.
-
-      <img src="media/05-24.png" />
-
-  - If necessary, click on the arrow to the right of "addUserToList". This will reveal the function's argument input boxes.
-
-    <img src="media/05-25.png" />
-
-  - In the "userId" box, input `0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef`.
-
-    <img src="media/05-26.png" />
-
-  - In the "listId" box, input `residency_fj`.
-
-    <img src="media/05-27.png" />
+    <img src="media/05-XX.png" />
 
   - Click "transact".
 
-    <img src="media/05-28.png" />
+    <img src="media/05-XX.png" />
 
   - The transaction should succeed, and you should see a new green checkmark appear in the console.
 
-      <img src="media/05-29.png" />
+      <img src="media/05-XX.png" />
 
-  </details>
+  </details-->
 
-- Let's try calling `buy` again. Since our residency is now on Fiji (`fj`), which is marked as disallowed, the contract now refuses the transaction.
+- Let's try calling `buy` again. Since we're not in the `plus` list anymore, which is marked as required, the contract now refuses the transaction.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on "buy" again.
 
-      <img src="media/05-30.png" />
+      <img src="media/05-XX.png" />
 
-  - You should see a red cross on the console, meaning the transaction failed. It should also read the reason: "Non KYC-compliant sender."
+  - You should see a red cross on the console, meaning the transaction failed. It should also read the reason: "Non KYC-compliant sender: must have cleared `plus` level."
 
-      <img src="media/05-31.png" />
+      <img src="media/05-XX.png" />
 
-  </details>
+  </details-->
 
 </details>
 

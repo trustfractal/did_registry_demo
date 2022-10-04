@@ -27,13 +27,13 @@ For these demonstrations, we'll deploy our own copy of Fractal's DID Registry. W
 <details>
   <summary>👁 Step-by-step demonstration</summary>
 
-In order to make this guide accessible to non-blockchain developers, we've included step-by-step screenshots. If you're a blockchain developer and you're familiar with Remix IDE, feel free to skip these.
+<!-- In order to make this guide accessible to non-blockchain developers, we've included step-by-step screenshots. If you're a blockchain developer and you're familiar with Remix IDE, feel free to skip these. -->
 
 Let's get started! First off, let's start by deploying our own copy of a FractalRegistry.
 
 - Go to [Remix IDE](https://remix.ethereum.org/) and clone this git repo as a workspace.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - On your browser, go to `https://remix.ethereum.org/`. Accept or decline their analytics collection.
@@ -60,11 +60,11 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
     <img src="media/01-06.png" />
 
-  </details>
+  </details-->
 
 - Compile and deploy the `contracts/1_FractalRegistry.sol` contract. Use your own address as the `root` constructor argument.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - On the file browser on the left, click "contracts", and then "1_FractalRegistry.sol".
@@ -105,7 +105,7 @@ Let's get started! First off, let's start by deploying our own copy of a Fractal
 
   We now have a working FractalRegistry deployment to play around with! 🎉
 
-  </details>
+  </details-->
 
 </details>
 
@@ -136,7 +136,7 @@ Let's use ourselves as an example. Let's pretend Fractal assigned us the `fracta
   - `addr`: our own address
   - `fractalId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on the arrow to the left of the deployed contract. This will reveal the contract's functions.
@@ -167,7 +167,7 @@ Let's use ourselves as an example. Let's pretend Fractal assigned us the `fracta
 
       <img src="media/02-07.png" />
 
-  </details>
+  </details-->
 
 </details>
 
@@ -183,7 +183,7 @@ Let's pretend we've passed the Plus KYC level (`plus`).
   - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
   - `listId`: `plus`
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Look for, and click on the arrow to the right of `addUserToList`.
@@ -206,7 +206,7 @@ Let's pretend we've passed the Plus KYC level (`plus`).
 
       <img src="media/02-18.png" />
 
-  </details>
+  </details-->
 
 </details>
 
@@ -231,7 +231,7 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
   `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Look for, and click on the arrow to the right of `getFractalId`.
@@ -254,7 +254,7 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
       <img src="media/03-05.png" />
 
-  </details>
+  </details-->
 
 - Make a `getFractalId` call with:
   - `addr`: some arbitrary valid address. Here's an example: `0x05a56E2D52c817161883f50c441c3228CFe54d9f`
@@ -262,7 +262,7 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
   `0x0000000000000000000000000000000000000000000000000000000000000000`
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Paste `0x05a56E2D52c817161883f50c441c3228CFe54d9f` on the `addr` box.
@@ -277,7 +277,7 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
       <img src="media/03-08.png" />
 
-  </details>
+  </details-->
 
 </details>
 
@@ -305,7 +305,7 @@ Let's see how to contract responds to querying for own lists, and an some other 
   - `listId`: `plus`
 - Verify that you get back `true`.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Look for, and click on the arrow to the right of `isUserInList`.
@@ -328,14 +328,14 @@ Let's see how to contract responds to querying for own lists, and an some other 
 
       <img src="media/03-XX.png" />
 
-  </details>
+  </details-->
 
 - Make a `isUserInList` call with:
   - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
   - `listId`: `basic`
 - Verify that you get back `false`.
 
-    <details>
+    <!--details>
       <summary>📸 Step-by-step screenshots</summary>
 
   - Paste `basic` on the `listId` box.
@@ -350,7 +350,7 @@ Let's see how to contract responds to querying for own lists, and an some other 
 
       <img src="media/03-XX.png" />
 
-    </details>
+    </details-->
   </details>
 
 ### On user change or document expiration
@@ -395,7 +395,7 @@ Let's try it out and see how it behaves!
   - `options`: `4`. Nothing special about this choice.
   - `registryAddress`: the address of the FractalRegistry we've been using.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - On the file browser on the left, click "contracts", and then "contracts/2_Voting.sol".
@@ -450,11 +450,11 @@ Let's try it out and see how it behaves!
 
     <img src="media/04-13.png" />
 
-  </details>
+  </details-->
 
 - Let's call `currentTally`. It should show that all four options have zero votes.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on the arrow to the left of the deployed contract. This will reveal the contract's functions.
@@ -469,11 +469,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-16.png" />
 
-  </details>
+  </details-->
 
 - Let's call `vote` with option `1`. It should succeed.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on the arrow to the right of "vote".
@@ -492,11 +492,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-20.png" />
 
-  </details>
+  </details-->
 
 - Let's call `currentTally` again. It should show that option `1` has one vote, and that options `0`, `2`, and `3` have all zero votes.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on "currentTally" again.
@@ -507,11 +507,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-22.png" />
 
-  </details>
+  </details-->
 
 - Let's try calling `vote` again. This time, it should fail, with the reason "Already voted: the same person can't vote twice."
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on "vote" again.
@@ -522,11 +522,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-24.png" />
 
-  </details>
+  </details-->
 
 - Let's try calling `vote` with a different address, one that's not registered in our FractalRegistry contract. It should fail, with the reason "Unregistered user: user must be present in FractalRegistry."
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Scroll all the way up, and select the second account. This now becomes our address.
@@ -545,11 +545,11 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-28.png" />
 
-  </details>
+  </details-->
 
 - Let's call `currentTally` again. Even though we tried to execute a bunch of invalid votes, it should return the same results as before.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on "currentTally" again.
@@ -560,7 +560,7 @@ Let's try it out and see how it behaves!
 
       <img src="media/04-30.png" />
 
-  </details>
+  </details-->
 
 </details>
 
@@ -596,7 +596,7 @@ Let's try it out and see it working!
 
   - `registryAddress`: the address of the FractalRegistry we've been using.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - On the file browser on the left, click "contracts", and then "contracts/3_DemoToken.sol".
@@ -643,11 +643,11 @@ Let's try it out and see it working!
 
     <img src="media/05-11.png" />
 
-  </details>
+  </details-->
 
 - Let's call `balance` for our own address. Since we didn't buy any tokens yet, it should be zero.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Scroll all the way up, and copy your own address.
@@ -662,11 +662,11 @@ Let's try it out and see it working!
 
     <img src="media/05-14.png" />
 
-  </details>
+  </details-->
 
 - Let's call `buy` with 42 Wei. Since we're in the `plus` list, we should be successful!
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Scroll all the way up, until you see the "Value" input box, and put `42` in it.
@@ -681,22 +681,22 @@ Let's try it out and see it working!
 
       <img src="media/05-17.png" />
 
-  </details>
+  </details-->
 
 - Let's call `balance` again. It should now return 42.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click "balanceOf" again. It should now return `42`.
 
     <img src="media/05-18.png" />
 
-  </details>
+  </details-->
 
 - In order to see an example of a non-compliant person trying to buy tokens, let's pretend our documents expired and Fractal's server took us off the `plus` list.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - If necessary, click on the arrow to the left of the FractalRegistry contract. This will reveal the contract's functions.
@@ -723,11 +723,11 @@ Let's try it out and see it working!
 
       <img src="media/05-XX.png" />
 
-  </details>
+  </details-->
 
 - Let's try calling `buy` again. Since we're not in the `plus` list anymore, which is marked as required, the contract now refuses the transaction.
 
-  <details>
+  <!--details>
     <summary>📸 Step-by-step screenshots</summary>
 
   - Click on "buy" again.
@@ -738,7 +738,7 @@ Let's try it out and see it working!
 
       <img src="media/05-XX.png" />
 
-  </details>
+  </details-->
 
 </details>
 

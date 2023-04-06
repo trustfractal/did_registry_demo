@@ -173,12 +173,9 @@ Let's use ourselves as an example. Let's pretend Fractal assigned us the `fracta
 
 Fractal's servers also make a few `addUserToList` calls with the relevant lists. Let's take a look at lists currently in use, and what it means for a user to be present in each of them.
 
-| listId       | Meaning                                                                                              |
-| ------------ | ---------------------------------------------------------------------------------------------------- |
-| `basic`      | The user has passed the `basic` [KYC level](https://docs.developer.fractal.id/kyc-levels).           |
-| `plus`       | The user has passed the `plus` [KYC level](https://docs.developer.fractal.id/kyc-levels).            |
-| `fatf_grey`  | Resident of a country that's present in the FATF's list of jurisdictions under increased monitoring. |
-| `fatf_black` | Resident of a country that's present in the FATF's list of high-risk jurisdictions.                  |
+| listId               | Meaning                                                                    |
+| -------------------- | -------------------------------------------------------------------------- |
+| `client_custom_list` | Custom list created for clients that have specific KYC compliance needs.   |
 
 <details>
   <summary>👁 Step-by-step demonstration</summary>
@@ -288,27 +285,13 @@ Let's see how to contract responds to querying for own address, and an arbitrary
 
 </details>
 
-### KYC levels
-
-After you get the user's `fractalId`, you can then check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status and/or FATF list presence.
+After you get the user's `fractalId`, you can then check their presence on the Registry's lists with `isUserInList`, which enables you to effectively check their KYC status in your custom client list.
 
 Here are a few examples:
 
 ```solidity
-// Passed Basic KYC level
-registry.isUserInList(fractalId, "basic")
-
-// Passed Plus KYC level
-registry.isUserInList(fractalId, "plus")
-
-// Passed Basic or Plus KYC level
-registry.isUserInList(fractalId, "basic") ||
-    registry.isUserInList(fractalId, "plus")
-
-// Passed Plus KYC level and is not in either FATF lists
-registry.isUserInList(fractalId, "plus") &&
-    !registry.isUserInList(fractalId, "fatf_grey") &&
-    !registry.isUserInList(fractalId, "fatf_black")
+// Passed KYC for client
+registry.isUserInList(fractalId, "custom_client_list_id")
 ```
 
 <details>
@@ -318,38 +301,8 @@ Let's see how to contract responds to querying for own lists, and an some other 
 
 - Make a `isUserInList` call with:
   - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
-  - `listId`: `plus`
+  - `listId`: `custom_client_list_id`
 - Verify that you get back `true`.
-
-  <!--details>
-    <summary>📸 Step-by-step screenshots</summary>
-
-  - Look for, and click on the arrow to the right of `isUserInList`.
-
-      <img src="media/03-09.png" />
-
-  - Paste `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF` on the `userId` box.
-
-      <img src="media/03-10.png" />
-
-  - Paste `plus` on the `listId` box.
-
-      <img src="media/03-XX.png" />
-
-  - Click "call".
-
-      <img src="media/03-XX.png" />
-
-  - The call should be successful and have returned `true`.
-
-      <img src="media/03-XX.png" />
-
-  </details-->
-
-- Make a `isUserInList` call with:
-  - `userId`: `0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF`
-  - `listId`: `basic`
-- Verify that you get back `false`.
 
     <!--details>
       <summary>📸 Step-by-step screenshots</summary>
@@ -362,7 +315,7 @@ Let's see how to contract responds to querying for own lists, and an some other 
   
       <img src="media/03-XX.png" />
   
-  - The call should be successful and have returned `false`.
+  - The call should be successful and have returned `true`.
   
       <img src="media/03-XX.png" />
   

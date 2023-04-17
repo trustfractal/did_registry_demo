@@ -30,6 +30,6 @@
   "author": "Trust Fractal <engineering@fractal.id>",
   "license": "MIT",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.7.3"
+    "@openzeppelin/contracts": "^4.8.3"
   }
 }
